@@ -10,6 +10,8 @@
 friction = 0.01
 
 [node name="Player" node_paths=PackedStringArray("floorSensors", "yawTarget", "pitchTarget", "headMesh", "mouseLookRotationTarget", "animPlayer") instance=ExtResource("1_kd8d6")]
+collision_layer = 2
+collision_mask = 3
 physics_material_override = SubResource("PhysicsMaterial_gp18r")
 script = ExtResource("2_x2qyr")
 floorSensors = NodePath("FootRays")
