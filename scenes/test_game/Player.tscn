@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://scripts/entities/InteractionRay.cs" id="5_ptte0"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gp18r"]
-friction = 0.1
+friction = 0.01
 
 [node name="Player" node_paths=PackedStringArray("floorSensors", "yawTarget", "pitchTarget", "headMesh", "mouseLookRotationTarget", "animPlayer") instance=ExtResource("1_kd8d6")]
 physics_material_override = SubResource("PhysicsMaterial_gp18r")
