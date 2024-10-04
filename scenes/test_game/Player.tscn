@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://5tfng4tp7c4"]
 
-[ext_resource type="PackedScene" uid="uid://bvfvn1kt2gngl" path="res://assets/objects/player/player_hitbox.blend" id="1_kd8d6"]
-[ext_resource type="PackedScene" uid="uid://3hnuihb2x04d" path="res://assets/objects/player/player_rig_default.blend" id="2_jjmcg"]
+[ext_resource type="PackedScene" uid="uid://ddj0kes8pqy0r" path="res://assets/entities/player/player_hitbox.glb" id="1_kd8d6"]
+[ext_resource type="PackedScene" uid="uid://7glxrem48coi" path="res://assets/entities/player/player_rig_default.glb" id="2_jjmcg"]
 [ext_resource type="Script" path="res://scripts/entities/SimpleRigidPlayer.cs" id="2_x2qyr"]
 [ext_resource type="Script" path="res://utility/Node/PhysicsSmoother.cs" id="4_8qcpq"]
 [ext_resource type="Script" path="res://scripts/entities/InteractionRay.cs" id="5_ptte0"]
