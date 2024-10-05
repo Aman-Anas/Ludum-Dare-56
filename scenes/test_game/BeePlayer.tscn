@@ -22,6 +22,21 @@ pewPos2 = NodePath("PhysicsSmoother/Node3D/Node3D2")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_e5v8d")
 
+[node name="SpinTar" type="Node3D" parent="." node_paths=PackedStringArray("target", "player")]
+top_level = true
+script = ExtResource("6_iqo1m")
+target = NodePath("..")
+player = NodePath("..")
+
+[node name="PhysicsSmoother2" type="Node3D" parent="SpinTar" node_paths=PackedStringArray("target")]
+script = ExtResource("2_dwdhg")
+target = NodePath("..")
+
+[node name="CamTar" type="Node3D" parent="SpinTar/PhysicsSmoother2"]
+transform = Transform3D(1, 0, 0, 0, 0.987136, 0.159881, 0, -0.159881, 0.987136, 0, 0.743001, 3.45435)
+
+[node name="Camera3D" type="Camera3D" parent="SpinTar/PhysicsSmoother2/CamTar"]
+
 [node name="PhysicsSmoother" type="Node3D" parent="." node_paths=PackedStringArray("target")]
 script = ExtResource("2_dwdhg")
 target = NodePath("..")
@@ -41,14 +56,3 @@ pew = ExtResource("2_i1gbd")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7, 0, 0.457515)
 script = ExtResource("4_mtdcs")
 pew = ExtResource("2_i1gbd")
-
-[node name="SpinTar" type="Node3D" parent="PhysicsSmoother" node_paths=PackedStringArray("target", "player")]
-top_level = true
-script = ExtResource("6_iqo1m")
-target = NodePath("..")
-player = NodePath("../..")
-
-[node name="CamTar" type="Node3D" parent="PhysicsSmoother/SpinTar"]
-transform = Transform3D(1, 0, 0, 0, 0.987136, 0.159881, 0, -0.159881, 0.987136, 0, 0.743001, 3.45435)
-
-[node name="Camera3D" type="Camera3D" parent="PhysicsSmoother/SpinTar/CamTar"]
