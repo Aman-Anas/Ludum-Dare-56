@@ -10,6 +10,9 @@ public partial class BeePlayer : RigidBody3D
     [Export]
     Node3D headRoot;
 
+    [Export]
+    PackedScene pew;
+
     // Mouselook
     Vector2 mouseMovement = new();
 
@@ -35,6 +38,15 @@ public partial class BeePlayer : RigidBody3D
     public override void _Process(double delta)
     {
         RunAnimations();
+
+        if (Input.IsActionJustPressed(GameActions.PLAYER_PRIMARY_USE))
+        {
+            var newPew = pew.Instantiate<RigidBody3D>();
+            GetTree().Root.AddChild(newPew);
+            newPew.GlobalTransform = headRoot.GlobalTransform;
+            newPew.LinearVelocity = newPew.GlobalBasis * new Vector3(0, 0, -20f);
+            GetTree().CreateTimer(3).Timeout += newPew.QueueFree;
+        }
     }
 
     public override void _UnhandledInput(InputEvent @event)
@@ -77,8 +89,10 @@ public partial class BeePlayer : RigidBody3D
 
         var newAngularVel = GlobalBasis * (ROTATION_SPEED * new Vector3(pitch, yaw, roll));
 
+        var diffAngular = newAngularVel - state.AngularVelocity;
+
         // Set our angular velocity
-        state.AngularVelocity = newAngularVel;
+        state.AngularVelocity += diffAngular * 0.4f;
 
         var targetLinearVel = MOVEMENT_SPEED * new Vector3(0, 0, forward);
         var actualLinearVel = GlobalBasis.Inverse() * state.LinearVelocity;

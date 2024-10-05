@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cnfn1qrr1c8bj"]
+[gd_scene load_steps=10 format=3 uid="uid://cnfn1qrr1c8bj"]
 
 [ext_resource type="Script" path="res://scripts/entities/BeePlayer.cs" id="1_lc6q3"]
 [ext_resource type="Script" path="res://utility/Node/PhysicsSmoother.cs" id="2_dwdhg"]
+[ext_resource type="PackedScene" uid="uid://cio20h4h51pnm" path="res://scenes/test_game/Pew.tscn" id="2_i1gbd"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_rs4nd"]
 friction = 0.09
@@ -22,9 +23,11 @@ height = 0.8
 [sub_resource type="CylinderMesh" id="CylinderMesh_jvnnb"]
 height = 0.02
 
-[node name="BeePlayer" type="RigidBody3D"]
+[node name="BeePlayer" type="RigidBody3D" node_paths=PackedStringArray("headRoot")]
 physics_material_override = SubResource("PhysicsMaterial_rs4nd")
 script = ExtResource("1_lc6q3")
+headRoot = NodePath("PhysicsSmoother/Node3D/Node3D")
+pew = ExtResource("2_i1gbd")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
@@ -63,6 +66,9 @@ mesh = SubResource("SphereMesh_p471r")
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="PhysicsSmoother/Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.310551, 0)
 mesh = SubResource("CylinderMesh_jvnnb")
+
+[node name="Node3D" type="Node3D" parent="PhysicsSmoother/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.35741)
 
 [node name="Camera3D" type="Camera3D" parent="PhysicsSmoother"]
 transform = Transform3D(1, 0, 0, 0, 0.987136, 0.159881, 0, -0.159881, 0.987136, 0, 0.743001, 3.45435)
