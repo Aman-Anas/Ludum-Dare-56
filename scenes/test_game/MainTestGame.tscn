@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://c6yiplbg4g5yr" path="res://addons/kenney_prototype_textures/light/texture_07.png" id="4_8an4d"]
 [ext_resource type="Script" path="res://utility/Node/LocalGravityArea.cs" id="5_lxk3v"]
 [ext_resource type="PackedScene" uid="uid://be68kkhnkgb6u" path="res://scenes/main_menu/Pause.tscn" id="6_euigh"]
-[ext_resource type="PackedScene" uid="uid://5tfng4tp7c4" path="res://scenes/test_game/Player.tscn" id="7_fvyis"]
+[ext_resource type="PackedScene" uid="uid://cnfn1qrr1c8bj" path="res://scenes/test_game/BeePlayer.tscn" id="7_mv7n7"]
 [ext_resource type="PackedScene" uid="uid://crf33aqia24q7" path="res://scenes/test_game/TestBall.tscn" id="8_gbhpy"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4rm7k"]
@@ -59,6 +59,45 @@ shadow_enabled = true
 [node name="WallsEnvironment" type="CSGCombiner3D" parent="TestLevel"]
 material_override = ExtResource("2_ks5h1")
 use_collision = true
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="TestLevel/WallsEnvironment"]
+transform = Transform3D(-1, 8.74228e-08, 0, -4.83917e-08, -0.553537, -0.832825, -7.28079e-08, -0.832825, 0.553537, -3, 30.8438, -6.88227)
+radius = 4.0
+height = 3.741
+sides = 20
+
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="TestLevel/WallsEnvironment"]
+transform = Transform3D(-1, 8.74228e-08, 0, -4.83917e-08, -0.553537, -0.832825, -7.28079e-08, -0.832825, 0.553537, -3, 30.8438, -6.88227)
+operation = 2
+radius = 3.4
+height = 4.521
+sides = 20
+
+[node name="CSGCylinder3D7" type="CSGCylinder3D" parent="TestLevel/WallsEnvironment"]
+transform = Transform3D(-1, 8.74228e-08, 0, -2.53702e-08, -0.290201, -0.956966, -8.36606e-08, -0.956966, 0.290201, -3, 35.6053, 3.8122)
+radius = 4.0
+height = 3.741
+sides = 20
+
+[node name="CSGCylinder3D8" type="CSGCylinder3D" parent="TestLevel/WallsEnvironment"]
+transform = Transform3D(-1, 8.74228e-08, 0, -2.53702e-08, -0.290201, -0.956966, -8.36606e-08, -0.956966, 0.290201, -3, 35.6053, 3.8122)
+operation = 2
+radius = 3.4
+height = 4.521
+sides = 20
+
+[node name="CSGCylinder3D9" type="CSGCylinder3D" parent="TestLevel/WallsEnvironment"]
+transform = Transform3D(-1, 8.74228e-08, -3.76192e-15, 8.62208e-09, 0.0986251, -0.995125, -8.69966e-08, -0.995125, -0.0986251, -3, 35.783, 15.1525)
+radius = 4.0
+height = 3.741
+sides = 20
+
+[node name="CSGCylinder3D10" type="CSGCylinder3D" parent="TestLevel/WallsEnvironment"]
+transform = Transform3D(-1, 8.74228e-08, -3.76192e-15, 8.62208e-09, 0.0986251, -0.995125, -8.69966e-08, -0.995125, -0.0986251, -3, 35.783, 15.1525)
+operation = 2
+radius = 3.4
+height = 4.521
+sides = 20
 
 [node name="CSGCylinder3D3" type="CSGCylinder3D" parent="TestLevel/WallsEnvironment"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -1.31134e-07, 3, 12.8647)
@@ -286,9 +325,6 @@ shape = SubResource("BoxShape3D_hjowt")
 
 [node name="Pause" parent="." instance=ExtResource("6_euigh")]
 
-[node name="Player" parent="." instance=ExtResource("7_fvyis")]
-transform = Transform3D(0.384086, 0, 0.923297, 0, 1, 0, -0.923297, 0, 0.384086, 12.9, 0.1, -4.4)
-
 [node name="TestBall2" parent="." instance=ExtResource("8_gbhpy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 125.095, 1.84353)
 
@@ -296,3 +332,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 125.095, 1.84353)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 125.095, 1.84353)
 
 [node name="TestBall" parent="." instance=ExtResource("8_gbhpy")]
+
+[node name="BeePlayer" parent="." instance=ExtResource("7_mv7n7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.1741, 3.10513, -4.44523)

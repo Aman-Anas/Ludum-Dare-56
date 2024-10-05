@@ -18,7 +18,7 @@ public partial class GameConfig
     public string TranslationLocale { get; set; }
 
     // Game-specific config
-    public float MouseSensitivity { get; set; } = 0.005f;
+    public float MouseSensitivity { get; set; } = 0.05f;
 
     public GameConfig()
     {
