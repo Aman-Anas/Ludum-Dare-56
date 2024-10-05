@@ -1,0 +1,83 @@
+[gd_scene load_steps=8 format=3 uid="uid://d43nevj16s6p"]
+
+[ext_resource type="Script" path="res://scripts/UI/Ingameui.cs" id="1_ncbrc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6aakk"]
+
+[sub_resource type="Gradient" id="Gradient_q2y1v"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.325, 0.325, 0.325, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lq1rc"]
+gradient = SubResource("Gradient_q2y1v")
+fill_from = Vector2(0, 0.252137)
+
+[sub_resource type="Gradient" id="Gradient_3l8pt"]
+offsets = PackedFloat32Array(0.215633, 0.245283, 0.363881, 0.528302, 0.544474)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1, 0, 0.758671, 0.852439, 1, 0.151559, 0.0170608, 0.00130268, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_x8wh8"]
+gradient = SubResource("Gradient_3l8pt")
+width = 500
+height = 500
+fill = 1
+fill_from = Vector2(0.504274, 0.521368)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5m1td"]
+
+[node name="UI" type="Control" node_paths=PackedStringArray("speedBar", "speedNum")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_ncbrc")
+speedBar = NodePath("PanelContain/Speedbar")
+speedNum = NodePath("Label")
+
+[node name="PanelContain" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -136.0
+offset_top = -136.0
+offset_right = -1.0
+offset_bottom = -1.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_6aakk")
+
+[node name="Speedbar" type="TextureProgressBar" parent="PanelContain"]
+layout_mode = 2
+size_flags_vertical = 3
+value = 93.0
+fill_mode = 4
+nine_patch_stretch = true
+texture_under = SubResource("GradientTexture2D_lq1rc")
+texture_progress = SubResource("GradientTexture2D_x8wh8")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+offset_left = 1022.0
+offset_top = 523.0
+offset_right = 1147.0
+offset_bottom = 648.0
+size_flags_vertical = 1
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxTexture_5m1td")

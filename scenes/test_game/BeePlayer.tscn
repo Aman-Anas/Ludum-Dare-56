@@ -1,33 +1,22 @@
-[gd_scene load_steps=10 format=3 uid="uid://cnfn1qrr1c8bj"]
+[gd_scene load_steps=9 format=3 uid="uid://cnfn1qrr1c8bj"]
 
 [ext_resource type="Script" path="res://scripts/entities/BeePlayer.cs" id="1_lc6q3"]
 [ext_resource type="Script" path="res://utility/Node/PhysicsSmoother.cs" id="2_dwdhg"]
 [ext_resource type="PackedScene" uid="uid://cio20h4h51pnm" path="res://scenes/test_game/Pew.tscn" id="2_i1gbd"]
+[ext_resource type="PackedScene" uid="uid://bk63wnt16u1q7" path="res://assets/entities/player/funnybee.glb" id="3_pu74h"]
+[ext_resource type="Script" path="res://scripts/entities/PewShooter.cs" id="4_mtdcs"]
+[ext_resource type="Script" path="res://scripts/camera/CameraGameSmooth.cs" id="6_iqo1m"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_rs4nd"]
 friction = 0.09
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_e5v8d"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_6fdnu"]
-radius = 0.3
-height = 1.0
-
-[sub_resource type="BoxMesh" id="BoxMesh_pb1r2"]
-size = Vector3(0.1, 0.1, 0.5)
-
-[sub_resource type="SphereMesh" id="SphereMesh_p471r"]
-radius = 0.4
-height = 0.8
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_jvnnb"]
-height = 0.02
-
-[node name="BeePlayer" type="RigidBody3D" node_paths=PackedStringArray("headRoot")]
+[node name="BeePlayer" type="RigidBody3D" node_paths=PackedStringArray("pewPos1", "pewPos2")]
 physics_material_override = SubResource("PhysicsMaterial_rs4nd")
 script = ExtResource("1_lc6q3")
-headRoot = NodePath("PhysicsSmoother/Node3D/Node3D")
-pew = ExtResource("2_i1gbd")
+pewPos1 = NodePath("PhysicsSmoother/Node3D/Node3D")
+pewPos2 = NodePath("PhysicsSmoother/Node3D/Node3D2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
@@ -37,38 +26,29 @@ shape = SubResource("CapsuleShape3D_e5v8d")
 script = ExtResource("2_dwdhg")
 target = NodePath("..")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="PhysicsSmoother"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -7.0001e-09, -0.160144)
-mesh = SubResource("CapsuleMesh_6fdnu")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="PhysicsSmoother"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.05004e-08, 0.697767)
-mesh = SubResource("CapsuleMesh_6fdnu")
-skeleton = NodePath("../..")
+[node name="funnybee" parent="PhysicsSmoother" instance=ExtResource("3_pu74h")]
+transform = Transform3D(-2.73359e-08, 0, 0.625372, 0, 0.625372, 0, -0.625372, 0, -2.73359e-08, 0, -0.0713387, 0.00748718)
 
 [node name="Node3D" type="Node3D" parent="PhysicsSmoother"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.896656)
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="PhysicsSmoother/Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.529039, 0, -0.3)
-mesh = SubResource("BoxMesh_pb1r2")
-skeleton = NodePath("../../..")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="PhysicsSmoother/Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.529, 0, -0.3)
-mesh = SubResource("BoxMesh_pb1r2")
-skeleton = NodePath("../../..")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="PhysicsSmoother/Node3D"]
-mesh = SubResource("SphereMesh_p471r")
-
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="PhysicsSmoother/Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.310551, 0)
-mesh = SubResource("CylinderMesh_jvnnb")
-
 [node name="Node3D" type="Node3D" parent="PhysicsSmoother/Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.35741)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, 0, 0.457515)
+script = ExtResource("4_mtdcs")
+pew = ExtResource("2_i1gbd")
 
-[node name="Camera3D" type="Camera3D" parent="PhysicsSmoother"]
+[node name="Node3D2" type="Node3D" parent="PhysicsSmoother/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7, 0, 0.457515)
+script = ExtResource("4_mtdcs")
+pew = ExtResource("2_i1gbd")
+
+[node name="SpinTar" type="Node3D" parent="PhysicsSmoother" node_paths=PackedStringArray("target", "player")]
+top_level = true
+script = ExtResource("6_iqo1m")
+target = NodePath("..")
+player = NodePath("../..")
+
+[node name="CamTar" type="Node3D" parent="PhysicsSmoother/SpinTar"]
 transform = Transform3D(1, 0, 0, 0, 0.987136, 0.159881, 0, -0.159881, 0.987136, 0, 0.743001, 3.45435)
+
+[node name="Camera3D" type="Camera3D" parent="PhysicsSmoother/SpinTar/CamTar"]

@@ -1,3 +1,5 @@
+namespace Game;
+
 using System.Linq;
 using Game;
 using Godot;
@@ -7,16 +9,20 @@ public partial class BeePlayer : RigidBody3D
 {
     public bool MovementEnabled { get; set; } = true;
 
-    [Export]
-    Node3D headRoot;
+    public float SpeedFloat { get; internal set; }
 
     [Export]
-    PackedScene pew;
+    PewShooter pewPos1;
+
+    [Export]
+    PewShooter pewPos2;
+
+    bool readyFire = true;
 
     // Mouselook
     Vector2 mouseMovement = new();
 
-    const float MOVEMENT_SPEED = 20f;
+    public const float MOVEMENT_SPEED = 30f;
     const float MOVEMENT_FORCE = 10f;
     const float ROTATION_SPEED = 3f;
 
@@ -39,14 +45,15 @@ public partial class BeePlayer : RigidBody3D
     {
         RunAnimations();
 
-        if (Input.IsActionJustPressed(GameActions.PLAYER_PRIMARY_USE))
+        if (Input.IsActionPressed(GameActions.PLAYER_PRIMARY_USE) && readyFire)
         {
-            var newPew = pew.Instantiate<RigidBody3D>();
-            GetTree().Root.AddChild(newPew);
-            newPew.GlobalTransform = headRoot.GlobalTransform;
-            newPew.LinearVelocity = newPew.GlobalBasis * new Vector3(0, 0, -20f);
-            GetTree().CreateTimer(3).Timeout += newPew.QueueFree;
+            pewPos1.Shoot();
+            pewPos2.Shoot();
+
+            readyFire = false;
+            GetTree().CreateTimer(0.1).Timeout += () => readyFire = true;
         }
+        SpeedFloat = Mathf.Abs(-(GlobalBasis.Inverse() * LinearVelocity).Z) / MOVEMENT_SPEED;
     }
 
     public override void _UnhandledInput(InputEvent @event)

@@ -20,7 +20,7 @@ public static class MathUtil
     //     Mathf.Lerp(from, to, 1f - MathF.Exp(-deltaTime * smoothing));
 
     public static float ExpDecay(float current, float target, float decayAmount, float deltaTime) =>
-        target + ((current - target) * MathF.Exp(-decayAmount * deltaTime));
+        target + ((current - target) * MathF.Exp(decayAmount * -deltaTime));
 
     public static void SeedRandomNumberGenerator(ulong seed) =>
         RNG = new RandomNumberGenerator { Seed = seed };

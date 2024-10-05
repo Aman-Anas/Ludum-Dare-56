@@ -1,6 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://c528dv4slqbn7"]
+[gd_scene load_steps=18 format=3 uid="uid://c528dv4slqbn7"]
 
+[ext_resource type="PackedScene" uid="uid://d43nevj16s6p" path="res://scenes/test_game/ingameui.tscn" id="1_0rxwo"]
 [ext_resource type="Material" uid="uid://dour81aelbrs3" path="res://assets/materials/test_material.tres" id="2_ks5h1"]
+[ext_resource type="PackedScene" uid="uid://diomwv7eas3c3" path="res://scenes/test_game/Ring.tscn" id="3_66cma"]
 [ext_resource type="Material" uid="uid://ddulokmr8s0l7" path="res://assets/materials/test_transparent_fade.tres" id="3_445kk"]
 [ext_resource type="Texture2D" uid="uid://c6yiplbg4g5yr" path="res://addons/kenney_prototype_textures/light/texture_07.png" id="4_8an4d"]
 [ext_resource type="Script" path="res://utility/Node/LocalGravityArea.cs" id="5_lxk3v"]
@@ -20,7 +22,13 @@ sky = SubResource("Sky_gf606")
 tonemap_mode = 2
 ssil_enabled = true
 glow_enabled = true
+glow_intensity = 1.1
+glow_strength = 0.22
 glow_bloom = 1.0
+glow_blend_mode = 1
+glow_hdr_threshold = 1.11
+glow_hdr_scale = 1.55
+glow_hdr_luminance_cap = 116.36
 volumetric_fog_density = 0.024
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lltu2"]
@@ -46,6 +54,9 @@ emission_energy_multiplier = 7.77
 size = Vector3(0.917912, 9.98205, 2.91571)
 
 [node name="MainTestGame" type="Node3D"]
+
+[node name="UI" parent="." node_paths=PackedStringArray("player") instance=ExtResource("1_0rxwo")]
+player = NodePath("../BeePlayer")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_xgs2d")
@@ -93,7 +104,7 @@ height = 3.741
 sides = 20
 
 [node name="CSGCylinder3D10" type="CSGCylinder3D" parent="TestLevel/WallsEnvironment"]
-transform = Transform3D(-1, 8.74228e-08, -3.76192e-15, 8.62208e-09, 0.0986251, -0.995125, -8.69966e-08, -0.995125, -0.0986251, -3, 35.783, 15.1525)
+transform = Transform3D(-1, 8.74228e-08, -3.98845e-15, 7.90056e-09, 0.0903719, -0.995908, -8.70651e-08, -0.995908, -0.0903719, -3, 35.783, 15.1525)
 operation = 2
 radius = 3.4
 height = 4.521
@@ -249,6 +260,48 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -19.05
 [node name="CSGBox3D21" type="CSGBox3D" parent="TestLevel/WallsEnvironment"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -18.0502, -2.15, -10)
 size = Vector3(1, 0.7, 1)
+
+[node name="Ring" parent="TestLevel/WallsEnvironment" instance=ExtResource("3_66cma")]
+transform = Transform3D(1, 0, 0, 0, 0.722895, -0.690958, 0, 0.690958, 0.722895, 7.45435, 18.2427, 7.50485)
+
+[node name="Ring2" parent="TestLevel/WallsEnvironment" instance=ExtResource("3_66cma")]
+transform = Transform3D(0.996638, 0.0681264, 0.0455194, 0.0019299, 0.535887, -0.844288, -0.0819115, 0.841537, 0.533954, 7.29055, 22.1678, 13.4155)
+
+[node name="Ring3" parent="TestLevel/WallsEnvironment" instance=ExtResource("3_66cma")]
+transform = Transform3D(0.975464, 0.204815, 0.0807577, 0.0516938, 0.143484, -0.988302, -0.214006, 0.968227, 0.129375, 7.85637, 24.1876, 20.87)
+
+[node name="Ring4" parent="TestLevel/WallsEnvironment" instance=ExtResource("3_66cma")]
+transform = Transform3D(0.911562, 0.297577, 0.283729, 0.132561, 0.440515, -0.887905, -0.389207, 0.846992, 0.36211, 8.93472, 25.4558, 28.0266)
+
+[node name="Ring5" parent="TestLevel/WallsEnvironment" instance=ExtResource("3_66cma")]
+transform = Transform3D(0.987964, 0.0627332, 0.141391, 0.0169658, 0.864607, -0.502161, -0.15375, 0.498516, 0.853137, 9.26045, 29.3592, 34.2487)
+
+[node name="Ring6" parent="TestLevel/WallsEnvironment" instance=ExtResource("3_66cma")]
+transform = Transform3D(0.975528, 0.0663656, -0.201031, 0.0373242, 0.879152, 0.471351, 0.208386, -0.468146, 0.856673, 8.86519, 35.3677, 36.0799)
+
+[node name="Ring7" parent="TestLevel/WallsEnvironment" instance=ExtResource("3_66cma")]
+transform = Transform3D(0.943519, -0.295772, 0.124949, 0.0284385, 0.463305, 0.881964, -0.31982, -0.831377, 0.447044, 6.37686, 40.5782, 33.4284)
+
+[node name="Ring8" parent="TestLevel/WallsEnvironment" instance=ExtResource("3_66cma")]
+transform = Transform3D(0.903103, -0.411663, 0.0908822, -0.205055, -0.241213, 0.945034, -0.368346, -0.875026, -0.303268, 2.37637, 41.8794, 25.4022)
+
+[node name="Ring9" parent="TestLevel/WallsEnvironment" instance=ExtResource("3_66cma")]
+transform = Transform3D(0.968642, 0.216322, 0.0908822, -0.0180794, -0.316077, 0.945034, 0.23394, -0.920121, -0.303268, 0.700659, 27.8415, -16.1372)
+
+[node name="Ring10" parent="TestLevel/WallsEnvironment" instance=ExtResource("3_66cma")]
+transform = Transform3D(0.968642, 0.216322, 0.0908822, -0.0180794, -0.316077, 0.945034, 0.23394, -0.920121, -0.303268, 8.28325, 16.7623, -48.3897)
+
+[node name="Ring11" parent="TestLevel/WallsEnvironment" instance=ExtResource("3_66cma")]
+transform = Transform3D(0.968642, 0.216322, 0.0908822, -0.0180794, -0.316077, 0.945034, 0.23394, -0.920121, -0.303268, 23.2427, -5.09562, -112.019)
+
+[node name="Ring12" parent="TestLevel/WallsEnvironment" instance=ExtResource("3_66cma")]
+transform = Transform3D(0.968642, 0.216322, 0.0908822, -0.0180794, -0.316077, 0.945034, 0.23394, -0.920121, -0.303268, 41.6728, -32.0246, -190.412)
+
+[node name="Ring13" parent="TestLevel/WallsEnvironment" instance=ExtResource("3_66cma")]
+transform = Transform3D(0.968642, 0.216322, 0.0908822, -0.0180794, -0.316077, 0.945034, 0.23394, -0.920121, -0.303268, 60.2194, -59.1238, -269.299)
+
+[node name="Ring14" parent="TestLevel/WallsEnvironment" instance=ExtResource("3_66cma")]
+transform = Transform3D(0.968642, 0.216322, 0.0908822, -0.0180794, -0.316077, 0.945034, 0.23394, -0.920121, -0.303268, 85.0324, -95.3793, -374.841)
 
 [node name="hole4" type="CSGBox3D" parent="TestLevel"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.6077, -1.19248, -7.67205)
