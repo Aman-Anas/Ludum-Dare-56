@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://cnfn1qrr1c8bj"]
+[gd_scene load_steps=10 format=3 uid="uid://cnfn1qrr1c8bj"]
 
 [ext_resource type="Script" path="res://scripts/entities/BeePlayer.cs" id="1_lc6q3"]
 [ext_resource type="Script" path="res://utility/Node/PhysicsSmoother.cs" id="2_dwdhg"]
 [ext_resource type="PackedScene" uid="uid://cio20h4h51pnm" path="res://scenes/test_game/Pew.tscn" id="2_i1gbd"]
 [ext_resource type="PackedScene" uid="uid://bk63wnt16u1q7" path="res://assets/entities/player/funnybee.glb" id="3_pu74h"]
+[ext_resource type="Script" path="res://scripts/camera/CameraZoomer.cs" id="4_0rs1j"]
 [ext_resource type="Script" path="res://scripts/entities/PewShooter.cs" id="4_mtdcs"]
 [ext_resource type="Script" path="res://scripts/camera/CameraGameSmooth.cs" id="6_iqo1m"]
 
@@ -13,13 +14,15 @@ friction = 0.09
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_e5v8d"]
 
 [node name="BeePlayer" type="RigidBody3D" node_paths=PackedStringArray("pewPos1", "pewPos2")]
+collision_layer = 2
+collision_mask = 3
 physics_material_override = SubResource("PhysicsMaterial_rs4nd")
 script = ExtResource("1_lc6q3")
 pewPos1 = NodePath("PhysicsSmoother/Node3D/Node3D")
 pewPos2 = NodePath("PhysicsSmoother/Node3D/Node3D2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -2.40296e-09, 0.0549732)
 shape = SubResource("CapsuleShape3D_e5v8d")
 
 [node name="SpinTar" type="Node3D" parent="." node_paths=PackedStringArray("target", "player")]
@@ -35,7 +38,13 @@ target = NodePath("..")
 [node name="CamTar" type="Node3D" parent="SpinTar/PhysicsSmoother2"]
 transform = Transform3D(1, 0, 0, 0, 0.987136, 0.159881, 0, -0.159881, 0.987136, 0, 0.743001, 3.45435)
 
-[node name="Camera3D" type="Camera3D" parent="SpinTar/PhysicsSmoother2/CamTar"]
+[node name="RayCast3D" type="RayCast3D" parent="SpinTar/PhysicsSmoother2/CamTar"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, -3.454)
+target_position = Vector3(0, 0, -3.6)
+
+[node name="Camera3D" type="Camera3D" parent="SpinTar/PhysicsSmoother2/CamTar" node_paths=PackedStringArray("cast")]
+script = ExtResource("4_0rs1j")
+cast = NodePath("../RayCast3D")
 
 [node name="PhysicsSmoother" type="Node3D" parent="." node_paths=PackedStringArray("target")]
 script = ExtResource("2_dwdhg")
