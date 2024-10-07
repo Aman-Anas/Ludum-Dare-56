@@ -51,12 +51,12 @@ emission_enabled = true
 emission = Color(0.014705, 0.620009, 0.775694, 1)
 emission_energy_multiplier = 12.51
 
-[sub_resource type="Gradient" id="Gradient_rhive"]
+[sub_resource type="Gradient" id="Gradient_yxigo"]
 offsets = PackedFloat32Array(0, 0.543081, 0.801567, 0.832898)
 colors = PackedColorArray(0.426273, 0.26094, 0.475251, 1, 0.084458, 0.124817, 0.116022, 1, 0, 1, 0.05, 1, 0, 1, 0.05, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_263od"]
-gradient = SubResource("Gradient_rhive")
+gradient = SubResource("Gradient_yxigo")
 fill = 1
 fill_from = Vector2(0.508547, 0.495726)
 

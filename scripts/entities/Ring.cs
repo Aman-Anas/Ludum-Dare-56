@@ -40,7 +40,7 @@ public partial class Ring : StaticBody3D
         done = true;
         if (exit)
         {
-            GetTree().ChangeSceneToPacked(nextScene);
+            GetTree().CreateTimer(0).Timeout += () => GetTree().ChangeSceneToPacked(nextScene);
         }
     }
 }

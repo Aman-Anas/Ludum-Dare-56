@@ -124,7 +124,7 @@ thingToSpawn = ExtResource("2_6wrnh")
 reloadTime = 5.0
 spawnPoint = NodePath("Node3D")
 explosion = ExtResource("3_kf56l")
-maxToSpawn = 3
+maxToSpawn = 1
 anims = NodePath("AnimationPlayer")
 metadata/Bad = 4.0
 

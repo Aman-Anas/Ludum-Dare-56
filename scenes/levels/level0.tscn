@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://l8wbb77wmmav"]
+[gd_scene load_steps=22 format=3 uid="uid://l8wbb77wmmav"]
 
 [ext_resource type="PackedScene" uid="uid://dafrcq72bjg88" path="res://scenes/test_game/PlayerDrop.tscn" id="1_1stj6"]
 [ext_resource type="Material" uid="uid://wkas6nlfxkul" path="res://assets/materials/terrain_material.tres" id="1_v1ote"]
 [ext_resource type="Texture2D" uid="uid://bx8vvynigtvqq" path="res://assets/materials/anthill_albedo.png" id="2_4cjlm"]
 [ext_resource type="PackedScene" uid="uid://diomwv7eas3c3" path="res://scenes/test_game/Ring.tscn" id="4_yhs8s"]
+[ext_resource type="PackedScene" uid="uid://bt5mbvj1d65bj" path="res://scenes/levels/level1.tscn" id="5_oj1lg"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xjpyp"]
 
@@ -27,6 +28,7 @@ glow_hdr_luminance_cap = 116.36
 volumetric_fog_density = 0.024
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kv7k8"]
+albedo_color = Color(0.637843, 0.637843, 0.637843, 1)
 albedo_texture = ExtResource("2_4cjlm")
 uv1_scale = Vector3(0.04, 0.04, 0.04)
 uv1_triplanar = true
@@ -43,6 +45,56 @@ font_size = 71
 pixel_size = 0.04
 depth = 0.529
 
+[sub_resource type="TextMesh" id="TextMesh_jp2uj"]
+material = SubResource("StandardMaterial3D_u3wu2")
+text = "Mission I"
+font_size = 71
+pixel_size = 0.04
+depth = 0.529
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iayqd"]
+albedo_color = Color(0, 0.815501, 0.717599, 1)
+
+[sub_resource type="TextMesh" id="TextMesh_ojgtk"]
+material = SubResource("StandardMaterial3D_iayqd")
+text = "Briefing:
+Strange Energy 
+readings detected 
+from the Ant Empire.
+Investigate immediately!"
+font_size = 26
+pixel_size = 0.04
+depth = 0.529
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ckpwv"]
+emission_enabled = true
+emission = Color(1.68458e-07, 0.403751, 0.416308, 1)
+emission_energy_multiplier = 300.0
+
+[sub_resource type="TextMesh" id="TextMesh_fskoy"]
+material = SubResource("StandardMaterial3D_ckpwv")
+text = "Mouse for
+pitch and yaw"
+font_size = 71
+pixel_size = 0.04
+depth = 0.529
+
+[sub_resource type="TextMesh" id="TextMesh_tfhef"]
+material = SubResource("StandardMaterial3D_ckpwv")
+text = "Try flying through all
+the rings!"
+font_size = 71
+pixel_size = 0.04
+depth = 0.529
+
+[sub_resource type="TextMesh" id="TextMesh_7r67d"]
+material = SubResource("StandardMaterial3D_ckpwv")
+text = "WASD for
+speed and roll"
+font_size = 71
+pixel_size = 0.04
+depth = 0.529
+
 [sub_resource type="TextMesh" id="TextMesh_8q2br"]
 material = SubResource("StandardMaterial3D_u3wu2")
 text = "^ ^ ^
@@ -50,6 +102,15 @@ text = "^ ^ ^
 font_size = 71
 pixel_size = 0.04
 depth = 0.529
+
+[sub_resource type="Gradient" id="Gradient_rhive"]
+offsets = PackedFloat32Array(0, 0.543081, 0.801567, 0.832898)
+colors = PackedColorArray(0.426273, 0.26094, 0.475251, 1, 0.084458, 0.124817, 0.116022, 1, 0, 1, 0.05, 1, 0, 1, 0.05, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_87i0j"]
+gradient = SubResource("Gradient_rhive")
+fill = 1
+fill_from = Vector2(0.508547, 0.495726)
 
 [node name="Level0" type="Node3D"]
 
@@ -63,11 +124,61 @@ shadow_enabled = true
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.44988, -0.175419, -22)
 material_override = ExtResource("1_v1ote")
+use_collision = true
 size = Vector3(25.8438, 15, 1)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.44988, 17.1186, -43.4213)
+material_override = ExtResource("1_v1ote")
+use_collision = true
+size = Vector3(25.8438, 15, 1)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.05407, 9.79752, -81.9982)
+material_override = ExtResource("1_v1ote")
+use_collision = true
+size = Vector3(19.3853, 29.6421, 1)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.19507, -3.53207, -127.725)
+material_override = ExtResource("1_v1ote")
+use_collision = true
+size = Vector3(33.8836, 5.98254, 24.187)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.05407, 5.6586, -147.795)
+material_override = ExtResource("1_v1ote")
+use_collision = true
+size = Vector3(19.3853, 24.3639, 17.8397)
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.1532, 5.6586, -169.415)
+material_override = ExtResource("1_v1ote")
+use_collision = true
+size = Vector3(19.3853, 24.3639, 34.2875)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.9734, 5.6586, -176.417)
+material_override = ExtResource("1_v1ote")
+use_collision = true
+size = Vector3(14.1996, 24.3639, 31.413)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.38054, 19.6536, -157.806)
+material_override = ExtResource("1_v1ote")
+use_collision = true
+size = Vector3(19.3853, 21.3144, 15.116)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.1762, -8.42165, -162.169)
+material_override = ExtResource("1_v1ote")
+use_collision = true
+size = Vector3(70.4988, 17.1928, 23.843)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.182274, 6.13205, -83.2464)
 material_override = SubResource("StandardMaterial3D_kv7k8")
+use_collision = true
 flip_faces = true
 size = Vector3(21.6177, 14.3452, 200)
 
@@ -77,6 +188,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.27067, 0, -0.0219219)
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0907046, 1.37415, -21.4651)
 mesh = SubResource("TextMesh_prqc0")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.43732, 10.2743, -183.149)
+mesh = SubResource("TextMesh_jp2uj")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.85242, 5.30242, -138.956)
+mesh = SubResource("TextMesh_ojgtk")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.00159665, 0, -0.541304, 0, 0.541306, 0, 0.541304, 0, 0.00159665, 11.0547, 1.37415, -13.0798)
+mesh = SubResource("TextMesh_fskoy")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.00306473, 0, -1.03902, 0, 1.03902, 0, 1.03902, 0, 0.00306473, 10.9512, 6.03933, -48.142)
+mesh = SubResource("TextMesh_tfhef")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.0015967, 0, 0.541304, 0, 0.541306, 0, -0.541304, 0, -0.0015967, -10.59, 1.57415, -13.0159)
+mesh = SubResource("TextMesh_7r67d")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0907046, 4.36139, -21.6053)
@@ -134,3 +265,21 @@ transform = Transform3D(0.649182, -0.20267, -7.694e-09, -1.59015e-08, -2.51168e-
 
 [node name="Ring15" parent="." instance=ExtResource("4_yhs8s")]
 transform = Transform3D(0.952848, -0.297472, -1.1293e-08, -2.33398e-08, -3.68657e-08, -0.998202, 0.297472, 0.952848, -4.21461e-08, -4.35043, 5, -88.5954)
+
+[node name="Ring17" parent="." instance=ExtResource("4_yhs8s")]
+transform = Transform3D(0.992144, -0.109814, -1.1293e-08, -1.58611e-08, -4.06479e-08, -0.998202, 0.109814, 0.992144, -4.21461e-08, 1.4654, 5, -107.224)
+
+[node name="Ring18" parent="." instance=ExtResource("4_yhs8s")]
+transform = Transform3D(0.431586, 0.205348, -5.40719e-09, 3.78751e-09, -2.05456e-08, -0.477948, -0.205348, 0.431586, -2.01799e-08, 3.10247, 5, -122.015)
+
+[node name="Ring19" parent="." instance=ExtResource("4_yhs8s")]
+transform = Transform3D(0.474599, 0.0564836, -5.40719e-09, -2.98447e-09, -2.06775e-08, -0.477948, -0.0564836, 0.474599, -2.01799e-08, -7.0262, 4.66846, -137.236)
+
+[node name="Ring16" parent="." instance=ExtResource("4_yhs8s")]
+transform = Transform3D(1.52302, 0, 0, 0, -6.65736e-08, -1.52302, 0, 1.52302, -6.65736e-08, 2.52802, 4.02567, -182.064)
+exit = true
+nextScene = ExtResource("5_oj1lg")
+
+[node name="Sprite3D" type="Sprite3D" parent="Ring16"]
+transform = Transform3D(7.74268, 0, 0, 0, -3.38443e-07, 7.74268, 0, -7.74268, -3.38443e-07, 0, 0.170086, 0)
+texture = SubResource("GradientTexture2D_87i0j")

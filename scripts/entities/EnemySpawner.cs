@@ -60,7 +60,7 @@ public partial class EnemySpawner : RigidBody3D
             }
             Manager.Instance.Data.LevelOneClearedBits++;
             Manager.Instance.UpdateCount?.Invoke();
-            QueueFree();
+            Free();
         }
     }
 

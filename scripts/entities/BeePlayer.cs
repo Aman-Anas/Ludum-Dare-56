@@ -28,7 +28,7 @@ public partial class BeePlayer : RigidBody3D
     Vector2 mouseMovement = new();
 
     public const float MOVEMENT_SPEED = 64f;
-    const float MOVEMENT_FORCE = 40f;
+    const float MOVEMENT_FORCE = 30f;
     const float ROTATION_SPEED = 3f;
 
     bool restart = false;
@@ -87,6 +87,7 @@ public partial class BeePlayer : RigidBody3D
             //     GD.Print(theNode);
             //     theNode.Free();
             // }
+            Manager.Instance.Data.LevelOneClearedBits = 0;
             GetTree().ReloadCurrentScene();
             return;
         }

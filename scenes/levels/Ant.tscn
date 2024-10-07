@@ -110,7 +110,7 @@ script = ExtResource("2_763ei")
 thingToLaunch = ExtResource("4_ej32h")
 detectPlayerArea = NodePath("../../Area3D")
 reloadTime = 0.5
-velocity = 50.0
+velocity = 45.0
 spawnPoint = NodePath("Node3D")
 timeDespawn = 0.8
 
