@@ -1,19 +1,146 @@
-[gd_scene load_steps=4 format=3 uid="uid://bt5mbvj1d65bj"]
+[gd_scene load_steps=14 format=3 uid="uid://bt5mbvj1d65bj"]
 
 [ext_resource type="PackedScene" uid="uid://do3ulschmq3ve" path="res://scenes/levels/Anthill.tscn" id="1_qo8ha"]
-[ext_resource type="Material" uid="uid://dour81aelbrs3" path="res://assets/materials/test_material.tres" id="2_k0nmr"]
 [ext_resource type="PackedScene" uid="uid://dafrcq72bjg88" path="res://scenes/test_game/PlayerDrop.tscn" id="3_k12k7"]
+[ext_resource type="PackedScene" uid="uid://dii3flj4bju3p" path="res://scenes/levels/Ant.tscn" id="4_6yto2"]
+[ext_resource type="PackedScene" uid="uid://0fmg3o4p48h6" path="res://assets/props/antlevel.glb" id="5_y02dk"]
+[ext_resource type="PackedScene" uid="uid://mnclnt1lihfr" path="res://assets/props/anttower.glb" id="6_3e8eo"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_p83lm"]
+
+[sub_resource type="Sky" id="Sky_gf606"]
+sky_material = SubResource("ProceduralSkyMaterial_p83lm")
+
+[sub_resource type="Environment" id="Environment_yavik"]
+background_mode = 2
+background_canvas_max_layer = -100
+sky = SubResource("Sky_gf606")
+tonemap_mode = 2
+ssil_enabled = true
+glow_enabled = true
+glow_intensity = 1.1
+glow_strength = 0.22
+glow_bloom = 1.0
+glow_blend_mode = 1
+glow_hdr_threshold = 1.11
+glow_hdr_scale = 1.55
+glow_hdr_luminance_cap = 116.36
+volumetric_fog_density = 0.024
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o8406"]
+emission_enabled = true
+emission = Color(0.014705, 0.620009, 0.775694, 1)
+emission_energy_multiplier = 12.51
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kb33k"]
+load_path = "res://.godot/imported/anthill_albedo.png-b3cde02984142c3d99a46274dbbc60f5.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_v5rxo"]
+load_path = "res://.godot/imported/anthill_emission.png-865b6e2f0095037a089bd949829eb4c5.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cyxat"]
+load_path = "res://.godot/imported/anthill_normal.png-2a503decb862d86b50988f67affe4cab.s3tc.ctex"
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_crh83"]
+albedo_color = Color(0.359069, 0.359069, 0.359069, 1)
+albedo_texture = SubResource("CompressedTexture2D_kb33k")
+emission_texture = SubResource("CompressedTexture2D_v5rxo")
+normal_enabled = true
+normal_texture = SubResource("CompressedTexture2D_cyxat")
 
 [node name="Level1" type="Node3D"]
 
-[node name="Anthill" parent="." instance=ExtResource("1_qo8ha")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.76768, -1.19209e-07, -1.11732)
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_yavik")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
-material_override = ExtResource("2_k0nmr")
-use_collision = true
-size = Vector3(47, 1, 66)
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.866025, 0.12941, 0.482963, -0.493568, 0.0668275, 0.867136, 0.0799406, -0.989337, 0.121747, -13.5504, 10.1729, 22.6275)
+shadow_enabled = true
+
+[node name="Anthill" parent="." instance=ExtResource("1_qo8ha")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.5222, -0.363705, -8.08608)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Anthill"]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -11.5313, -0.148759, -6.94587)
+material_override = SubResource("StandardMaterial3D_o8406")
+size = Vector3(26, 0.151367, 0.875)
+
+[node name="Anthill2" parent="." instance=ExtResource("1_qo8ha")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5219, -0.611043, -8.17273)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Anthill2"]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 12.1132, 0.0985792, -6.64145)
+material_override = SubResource("StandardMaterial3D_o8406")
+size = Vector3(26, 0.151367, 0.875)
+
+[node name="Anthill5" parent="." instance=ExtResource("1_qo8ha")]
+transform = Transform3D(0.387837, 0, 0.921728, 0, 1, 0, -0.921728, 0, 0.387837, 15.9118, -0.611043, 41.711)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Anthill5"]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 12.1132, 0.0985792, -6.64145)
+material_override = SubResource("StandardMaterial3D_o8406")
+size = Vector3(26, 0.151367, 0.875)
+
+[node name="Anthill3" parent="." instance=ExtResource("1_qo8ha")]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 18.0384, -0.419867, -63.1954)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Anthill3"]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 4.79514, 0.0985792, -2.41636)
+material_override = SubResource("StandardMaterial3D_o8406")
+size = Vector3(9.09961, 0.151367, 0.875)
+
+[node name="Anthill6" parent="." instance=ExtResource("1_qo8ha")]
+transform = Transform3D(-0.687442, 0, 0.726239, 0, 1, 0, -0.726239, 0, -0.687442, -16.1408, -0.035223, -20.9275)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Anthill6"]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 4.79514, 0.0985792, -2.41636)
+material_override = SubResource("StandardMaterial3D_o8406")
+size = Vector3(9.09961, 0.151367, 0.875)
+
+[node name="Anthill4" parent="." instance=ExtResource("1_qo8ha")]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -23.411, -0.035223, -35.836)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Anthill4"]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 4.79514, 0.0985792, -2.41636)
+material_override = SubResource("StandardMaterial3D_o8406")
+size = Vector3(9.09961, 0.151367, 0.875)
 
 [node name="PlayerDrop" parent="." instance=ExtResource("3_k12k7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.75429, 5.29104, 16.7006)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75743, 200.527, 17.4217)
+
+[node name="Ant" parent="." instance=ExtResource("4_6yto2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.89542, 0.598245, 19.3966)
+
+[node name="antlevel" parent="." instance=ExtResource("5_y02dk")]
+transform = Transform3D(0.734749, 0, 0, 0, -0.734749, 6.42338e-08, 0, -6.42338e-08, -0.734749, 6.04304, 32.8386, -17.3511)
+
+[node name="anttower" parent="." instance=ExtResource("6_3e8eo")]
+transform = Transform3D(2.46983, 0, 0, 0, 2.46983, 0, 0, 0, 2.46983, -27.2747, -2.89085, -23.3234)
+
+[node name="anttower2" parent="." instance=ExtResource("6_3e8eo")]
+transform = Transform3D(5.79795, 0, 0, 0, 5.79795, 0, 0, 0, 5.79795, 71.6075, -10.0725, 23.0797)
+
+[node name="anttower3" parent="." instance=ExtResource("6_3e8eo")]
+transform = Transform3D(2.46983, 0, 0, 0, 2.46983, 0, 0, 0, 2.46983, 13.6236, -2.45813, -49.4003)
+
+[node name="anttower9" parent="." instance=ExtResource("6_3e8eo")]
+transform = Transform3D(2.46983, 0, 0, 0, 2.46983, 0, 0, 0, 2.46983, 13.6236, -2.45813, 15.6093)
+
+[node name="anttower4" parent="." instance=ExtResource("6_3e8eo")]
+transform = Transform3D(2.46983, 0, 0, 0, 2.46983, 0, 0, 0, 2.46983, 39.762, -1.18002, -20.1554)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(-228.939, 0, -2.00145e-05, 0, 228.939, 0, 2.00145e-05, 0, -228.939, 25.621, 113.963, -4.85118)
+material_override = SubResource("ORMMaterial3D_crh83")
+use_collision = true
+flip_faces = true
+size = Vector3(1.23096, 1, 1)
+
+[node name="anttower5" parent="." instance=ExtResource("6_3e8eo")]
+transform = Transform3D(8.44123, 0, 0, 0, 8.44123, 0, 0, 0, 8.44123, -70.8321, -19.2694, 22.6048)
+
+[node name="anttower6" parent="." instance=ExtResource("6_3e8eo")]
+transform = Transform3D(8.44123, 0, 0, 0, 8.44123, 0, 0, 0, 8.44123, 4.84021, -26.513, -88.5969)
+
+[node name="anttower7" parent="." instance=ExtResource("6_3e8eo")]
+transform = Transform3D(0.0590214, 0, 0, 0, 0.0590214, 0, 0, 0, 0.0590214, 1.64621, -0.304276, -16.0596)

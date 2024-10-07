@@ -11,6 +11,11 @@ public partial class CameraGameSmooth : Node3D
     [Export]
     BeePlayer player;
 
+    public override void _Ready()
+    {
+        GlobalPosition = player.GlobalPosition;
+    }
+
     public override void _PhysicsProcess(double delta)
     {
         var targetPos = target.GlobalPosition;

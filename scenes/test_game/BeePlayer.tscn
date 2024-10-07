@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://cnfn1qrr1c8bj"]
+[gd_scene load_steps=11 format=3 uid="uid://cnfn1qrr1c8bj"]
 
 [ext_resource type="Script" path="res://scripts/entities/BeePlayer.cs" id="1_lc6q3"]
+[ext_resource type="PackedScene" uid="uid://b4snowx1yi38v" path="res://scenes/test_game/Explosion.tscn" id="2_5t65u"]
 [ext_resource type="Script" path="res://utility/Node/PhysicsSmoother.cs" id="2_dwdhg"]
 [ext_resource type="PackedScene" uid="uid://cio20h4h51pnm" path="res://scenes/test_game/Pew.tscn" id="2_i1gbd"]
 [ext_resource type="PackedScene" uid="uid://bk63wnt16u1q7" path="res://assets/entities/player/funnybee.glb" id="3_pu74h"]
@@ -17,9 +18,13 @@ friction = 0.09
 collision_layer = 2
 collision_mask = 3
 physics_material_override = SubResource("PhysicsMaterial_rs4nd")
+continuous_cd = true
+contact_monitor = true
+max_contacts_reported = 1
 script = ExtResource("1_lc6q3")
 pewPos1 = NodePath("PhysicsSmoother/Node3D/Node3D")
 pewPos2 = NodePath("PhysicsSmoother/Node3D/Node3D2")
+explosion = ExtResource("2_5t65u")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -2.40296e-09, 0.0549732)
@@ -34,6 +39,10 @@ player = NodePath("..")
 [node name="PhysicsSmoother2" type="Node3D" parent="SpinTar" node_paths=PackedStringArray("target")]
 script = ExtResource("2_dwdhg")
 target = NodePath("..")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SpinTar/PhysicsSmoother2"]
+transform = Transform3D(1, 0, 0, 0, 0.987136, 0.159881, 0, -0.159881, 0.987136, 0, 0.743001, 3.45435)
+visible = false
 
 [node name="CamTar" type="Node3D" parent="SpinTar/PhysicsSmoother2"]
 transform = Transform3D(1, 0, 0, 0, 0.987136, 0.159881, 0, -0.159881, 0.987136, 0, 0.743001, 3.45435)
@@ -57,11 +66,11 @@ transform = Transform3D(-2.73359e-08, 0, 0.625372, 0, 0.625372, 0, -0.625372, 0,
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.896656)
 
 [node name="Node3D" type="Node3D" parent="PhysicsSmoother/Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, 0, 0.457515)
+transform = Transform3D(0.999391, 0, 0.0348995, 0, 1, 0, -0.0348995, 0, 0.999391, 0.7, 0, 0.457515)
 script = ExtResource("4_mtdcs")
 pew = ExtResource("2_i1gbd")
 
 [node name="Node3D2" type="Node3D" parent="PhysicsSmoother/Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7, 0, 0.457515)
+transform = Transform3D(0.999391, 0, -0.0348995, 0, 1, 0, 0.0348995, 0, 0.999391, -0.7, 0, 0.457515)
 script = ExtResource("4_mtdcs")
 pew = ExtResource("2_i1gbd")

@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=3 uid="uid://b4snowx1yi38v"]
+
+[ext_resource type="PackedScene" uid="uid://ex1inx6t0syu" path="res://assets/entities/boom/explosion.glb" id="1_hfhrx"]
+[ext_resource type="Script" path="res://scripts/entities/Explosion.cs" id="1_igexc"]
+
+[sub_resource type="Gradient" id="Gradient_o5w8q"]
+offsets = PackedFloat32Array(0, 0.997151)
+colors = PackedColorArray(1, 0.412, 0.02, 1, 1, 0.911, 0.11, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_m560p"]
+gradient = SubResource("Gradient_o5w8q")
+fill = 1
+fill_from = Vector2(0.542735, 0.542735)
+fill_to = Vector2(1, 0.0213675)
+
+[sub_resource type="Gradient" id="Gradient_eglri"]
+colors = PackedColorArray(1, 0.4055, 0.13, 1, 1, 0.85, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yg0mk"]
+gradient = SubResource("Gradient_eglri")
+fill_from = Vector2(0.594017, 0.555556)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7khw5"]
+albedo_color = Color(0.877133, 0.818206, 0.123641, 1)
+albedo_texture = SubResource("GradientTexture2D_m560p")
+emission_enabled = true
+emission = Color(0.831143, 0.359035, 0.0206537, 1)
+emission_texture = SubResource("GradientTexture2D_yg0mk")
+
+[node name="Explosion" type="Node3D" node_paths=PackedStringArray("player")]
+script = ExtResource("1_igexc")
+player = NodePath("explosion/AnimationPlayer")
+
+[node name="explosion" parent="." instance=ExtResource("1_hfhrx")]
+transform = Transform3D(3.7, 0, 0, 0, 3.7, 0, 0, 0, 3.7, 0, 0, 0)
+
+[node name="Icosphere" parent="explosion" index="0"]
+material_override = SubResource("StandardMaterial3D_7khw5")
+"blend_shapes/Key 1" = 0.0045074
+
+[editable path="explosion"]

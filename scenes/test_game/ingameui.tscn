@@ -1,6 +1,31 @@
-[gd_scene load_steps=8 format=3 uid="uid://d43nevj16s6p"]
+[gd_scene load_steps=16 format=3 uid="uid://d43nevj16s6p"]
 
 [ext_resource type="Script" path="res://scripts/UI/Ingameui.cs" id="1_ncbrc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qgwhl"]
+bg_color = Color(0.0923971, 0.0923971, 0.092397, 1)
+expand_margin_left = 7.0
+expand_margin_top = 7.0
+expand_margin_right = 7.0
+expand_margin_bottom = 7.0
+
+[sub_resource type="Gradient" id="Gradient_cx6vx"]
+colors = PackedColorArray(0, 0, 0, 1, 0.355314, 0.355314, 0.355314, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_f0oht"]
+gradient = SubResource("Gradient_cx6vx")
+fill_from = Vector2(1, 1)
+
+[sub_resource type="Gradient" id="Gradient_43yqj"]
+offsets = PackedFloat32Array(0, 0.239892, 0.768194)
+colors = PackedColorArray(1, 0.216667, 0, 1, 0, 0.758671, 0.852439, 1, 0, 0.806498, 0.410474, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bfhi3"]
+gradient = SubResource("Gradient_43yqj")
+width = 500
+height = 500
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6aakk"]
 
@@ -10,7 +35,7 @@ colors = PackedColorArray(0.325, 0.325, 0.325, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_lq1rc"]
 gradient = SubResource("Gradient_q2y1v")
-fill_from = Vector2(0, 0.252137)
+fill_from = Vector2(0, 1)
 
 [sub_resource type="Gradient" id="Gradient_3l8pt"]
 offsets = PackedFloat32Array(0.215633, 0.245283, 0.363881, 0.528302, 0.544474)
@@ -25,7 +50,44 @@ fill_from = Vector2(0.504274, 0.521368)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5m1td"]
 
-[node name="UI" type="Control" node_paths=PackedStringArray("speedBar", "speedNum")]
+[sub_resource type="Animation" id="Animation_mqard"]
+resource_name = "hurt"
+length = 0.472
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.77, 0, 0.0641668, 0.376471), Color(0.77, 0, 0.0641668, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_pjruj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.77, 0, 0.0641668, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xtixw"]
+_data = {
+"RESET": SubResource("Animation_pjruj"),
+"hurt": SubResource("Animation_mqard")
+}
+
+[node name="UI" type="Control" node_paths=PackedStringArray("speedBar", "speedNum", "hpBar", "anims")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -36,6 +98,27 @@ mouse_filter = 1
 script = ExtResource("1_ncbrc")
 speedBar = NodePath("PanelContain/Speedbar")
 speedNum = NodePath("Label")
+hpBar = NodePath("PanelContain2/hpbar")
+anims = NodePath("AnimationPlayer")
+
+[node name="PanelContain2" type="PanelContainer" parent="."]
+layout_mode = 2
+offset_left = 1090.0
+offset_top = 174.0
+offset_right = 1115.0
+offset_bottom = 451.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_qgwhl")
+
+[node name="hpbar" type="TextureProgressBar" parent="PanelContain2"]
+layout_mode = 2
+size_flags_vertical = 3
+value = 8.0
+fill_mode = 3
+nine_patch_stretch = true
+texture_under = SubResource("GradientTexture2D_f0oht")
+texture_progress = SubResource("GradientTexture2D_bfhi3")
 
 [node name="PanelContain" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -88,3 +171,18 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_5m1td")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+color = Color(0.77, 0, 0.0641668, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xtixw")
+}

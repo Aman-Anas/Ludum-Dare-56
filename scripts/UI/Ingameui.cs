@@ -13,6 +13,17 @@ public partial class Ingameui : Control
     [Export]
     Label speedNum;
 
+    [Export]
+    TextureProgressBar hpBar;
+
+    [Export]
+    AnimationPlayer anims;
+
+    public override void _Ready()
+    {
+        player.GotHurt += () => anims.Play("hurt");
+    }
+
     public override void _Process(double delta)
     {
         int speed = Mathf.RoundToInt(101 * player.SpeedFloat);
@@ -20,5 +31,7 @@ public partial class Ingameui : Control
         speedBar.Value = speed;
 
         speedNum.Text = speed.ToString();
+
+        hpBar.Value = player.Health;
     }
 }

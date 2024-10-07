@@ -1,5 +1,6 @@
 namespace Game;
 
+using System;
 using System.Linq;
 using Game;
 using Godot;
@@ -7,6 +8,10 @@ using Godot;
 [GlobalClass]
 public partial class BeePlayer : RigidBody3D
 {
+    public float Health { get; set; } = 100;
+
+    public Action GotHurt { get; set; }
+
     public bool MovementEnabled { get; set; } = true;
 
     public float SpeedFloat { get; internal set; }
@@ -22,13 +27,18 @@ public partial class BeePlayer : RigidBody3D
     // Mouselook
     Vector2 mouseMovement = new();
 
-    public const float MOVEMENT_SPEED = 30f;
-    const float MOVEMENT_FORCE = 10f;
+    public const float MOVEMENT_SPEED = 60f;
+    const float MOVEMENT_FORCE = 20f;
     const float ROTATION_SPEED = 3f;
+
+    bool restart = false;
 
     // Player Animation
     [Export]
     AnimationPlayer animPlayer;
+
+    [Export]
+    PackedScene explosion;
 
     readonly StringName DEFAULT_ANIM = new("Idle"); // This should be an idle
     readonly StringName RUNNING_ANIM = new("Run");
@@ -38,11 +48,46 @@ public partial class BeePlayer : RigidBody3D
     {
         // Need this to capture the mouse of course
         Input.MouseMode = Input.MouseModeEnum.Captured;
+        this.BodyEntered += HitSomething;
+    }
+
+    public override void _ExitTree()
+    {
+        BodyEntered -= HitSomething;
+    }
+
+    void HitSomething(Node body)
+    {
+        if (body.HasMeta("Bad"))
+        {
+            Health -= (float)body.GetMeta("Bad");
+            GotHurt?.Invoke();
+
+            if (Health < 0)
+            {
+                var boom = explosion.Instantiate<Node3D>();
+                GetTree().CurrentScene.AddChild(boom);
+                boom.GlobalTransform = GlobalTransform;
+                restart = true;
+            }
+        }
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
+
     public override void _Process(double delta)
     {
+        if (restart)
+        {
+            // foreach (Node theNode in GetTree().CurrentScene.GetChildren())
+            // {
+            //     GD.Print(theNode);
+            //     theNode.Free();
+            // }
+            GetTree().ReloadCurrentScene();
+            return;
+        }
+
         RunAnimations();
 
         if (Input.IsActionPressed(GameActions.PLAYER_PRIMARY_USE) && readyFire)
@@ -51,7 +96,7 @@ public partial class BeePlayer : RigidBody3D
             pewPos2.Shoot();
 
             readyFire = false;
-            GetTree().CreateTimer(0.1).Timeout += () => readyFire = true;
+            GetTree().CreateTimer(0.1, false).Timeout += () => readyFire = true;
         }
         SpeedFloat = Mathf.Abs(-(GlobalBasis.Inverse() * LinearVelocity).Z) / MOVEMENT_SPEED;
     }

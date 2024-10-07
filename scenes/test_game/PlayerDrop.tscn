@@ -6,14 +6,9 @@
 
 [node name="PlayerDrop" type="Node3D"]
 
-[node name="BeePlayer" parent="." instance=ExtResource("1_6ccjj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.402997, 0, 0.131225)
-
 [node name="UI" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_pu37h")]
 player = NodePath("../BeePlayer")
 
 [node name="Pause" parent="." instance=ExtResource("3_u7wgj")]
-offset_left = -32.0
-offset_top = 131.0
-offset_right = -32.0
-offset_bottom = 131.0
+
+[node name="BeePlayer" parent="." instance=ExtResource("1_6ccjj")]

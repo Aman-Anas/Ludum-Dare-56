@@ -1,0 +1,130 @@
+[gd_scene load_steps=20 format=3 uid="uid://dii3flj4bju3p"]
+
+[ext_resource type="Script" path="res://scripts/entities/AntEnemy.cs" id="1_3rlco"]
+[ext_resource type="PackedScene" uid="uid://c0o23v8jfdb7j" path="res://assets/entities/ants/ant.glb" id="1_7qu8y"]
+[ext_resource type="Script" path="res://scripts/entities/EnemyShooter.cs" id="2_763ei"]
+[ext_resource type="PackedScene" uid="uid://b4snowx1yi38v" path="res://scenes/test_game/Explosion.tscn" id="2_x7wbl"]
+[ext_resource type="PackedScene" uid="uid://dfr0h4re5dc8a" path="res://scenes/test_game/EvilPew.tscn" id="4_ej32h"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4jt73"]
+radius = 0.385914
+height = 1.72049
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bimn0"]
+size = Vector3(30, 30, 30)
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_6dt5i"]
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_rro37"]
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_w8kk0"]
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_j0rb8"]
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_3yyna"]
+filters = ["Cube"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_888b8"]
+animation = &"CubeAction_001"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bfnx0"]
+animation = &"Cube_001Action"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kmfy7"]
+animation = &"Cube_001Action2"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3upmm"]
+animation = &"Cube_001Action_001"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_21sr4"]
+animation = &"walk1"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pmlle"]
+animation = &"CubeAction"
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_hhaol"]
+graph_offset = Vector2(-125.726, 46.7487)
+nodes/Add2/node = SubResource("AnimationNodeAdd2_3yyna")
+nodes/Add2/position = Vector2(180, 60)
+"nodes/Add2 2/node" = SubResource("AnimationNodeAdd2_6dt5i")
+"nodes/Add2 2/position" = Vector2(480, 40)
+"nodes/Add2 3/node" = SubResource("AnimationNodeAdd2_rro37")
+"nodes/Add2 3/position" = Vector2(720, 20)
+"nodes/Add2 4/node" = SubResource("AnimationNodeAdd2_w8kk0")
+"nodes/Add2 4/position" = Vector2(940, -20)
+"nodes/Add2 5/node" = SubResource("AnimationNodeAdd2_j0rb8")
+"nodes/Add2 5/position" = Vector2(1180, 20)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_pmlle")
+nodes/Animation/position = Vector2(-40, 100)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_888b8")
+"nodes/Animation 2/position" = Vector2(-40, 320)
+"nodes/Animation 3/node" = SubResource("AnimationNodeAnimation_bfnx0")
+"nodes/Animation 3/position" = Vector2(220, 340)
+"nodes/Animation 4/node" = SubResource("AnimationNodeAnimation_kmfy7")
+"nodes/Animation 4/position" = Vector2(420, 300)
+"nodes/Animation 5/node" = SubResource("AnimationNodeAnimation_3upmm")
+"nodes/Animation 5/position" = Vector2(680, 280)
+"nodes/Animation 6/node" = SubResource("AnimationNodeAnimation_21sr4")
+"nodes/Animation 6/position" = Vector2(940, 220)
+nodes/output/position = Vector2(1360, 40)
+node_connections = [&"Add2", 0, &"Animation", &"Add2", 1, &"Animation 2", &"Add2 2", 0, &"Add2", &"Add2 2", 1, &"Animation 3", &"Add2 3", 0, &"Add2 2", &"Add2 3", 1, &"Animation 4", &"Add2 4", 0, &"Add2 3", &"Add2 4", 1, &"Animation 5", &"Add2 5", 0, &"Add2 4", &"Add2 5", 1, &"Animation 6", &"output", 0, &"Add2 5"]
+
+[node name="Ant" type="RigidBody3D" node_paths=PackedStringArray("playerDetectArea", "player")]
+collision_layer = 7
+collision_mask = 7
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_3rlco")
+Health = 30.0
+playerDetectArea = NodePath("Area3D")
+speed = 8.245
+player = NodePath("AnimationTree")
+explosion = ExtResource("2_x7wbl")
+metadata/Bad = 5.0
+
+[node name="ant" parent="." instance=ExtResource("1_7qu8y")]
+transform = Transform3D(-4.37822e-08, 0, 1.00162, 0, 1.00162, 0, -1.00162, 0, -4.37822e-08, 0, 0, 0)
+
+[node name="Cube" parent="ant" index="3"]
+transform = Transform3D(0.940394, 0.340087, 0, -0.340087, 0.940394, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Cube_002" parent="ant" index="5"]
+transform = Transform3D(0.939693, -0.34202, 0, 0.34202, 0.939693, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Cylinder" parent="ant" index="12" node_paths=PackedStringArray("detectPlayerArea", "spawnPoint")]
+script = ExtResource("2_763ei")
+thingToLaunch = ExtResource("4_ej32h")
+detectPlayerArea = NodePath("../../Area3D")
+reloadTime = 1.03
+velocity = 40.0
+spawnPoint = NodePath("Node3D")
+timeDespawn = 2.0
+
+[node name="Node3D" type="Node3D" parent="ant/Cylinder" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.91378e-15, -4.37822e-08, 1.00162, -1.00162, -4.37822e-08, 0, 4.37822e-08, -1.00162, -4.37822e-08, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_4jt73")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(-4.37822e-08, 0, 1.00162, 0, 1.00162, 0, -1.00162, 0, -4.37822e-08, 0, 0, 0)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_bimn0")
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+root_node = NodePath("../ant")
+tree_root = SubResource("AnimationNodeBlendTree_hhaol")
+anim_player = NodePath("../ant/AnimationPlayer")
+parameters/Add2/add_amount = -1.27
+"parameters/Add2 2/add_amount" = 1.55
+"parameters/Add2 3/add_amount" = -1.36
+"parameters/Add2 4/add_amount" = -0.45
+"parameters/Add2 5/add_amount" = 1.0
+
+[editable path="ant"]

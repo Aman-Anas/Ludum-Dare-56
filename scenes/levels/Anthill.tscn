@@ -1,19 +1,35 @@
-[gd_scene load_steps=4 format=3 uid="uid://do3ulschmq3ve"]
+[gd_scene load_steps=6 format=3 uid="uid://do3ulschmq3ve"]
 
 [ext_resource type="Script" path="res://scripts/entities/EnemySpawner.cs" id="1_3k88t"]
 [ext_resource type="PackedScene" uid="uid://wtb1mcw07udg" path="res://assets/entities/ants/anthill.glb" id="1_jqdne"]
+[ext_resource type="PackedScene" uid="uid://dii3flj4bju3p" path="res://scenes/levels/Ant.tscn" id="2_6wrnh"]
+[ext_resource type="PackedScene" uid="uid://b4snowx1yi38v" path="res://scenes/test_game/Explosion.tscn" id="3_kf56l"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_gujqj"]
 points = PackedVector3Array(-1.80032, -0.0773353, -0.580818, 1.75749, 0.0284246, 0.329271, 0.217373, 1.72229, -0.380573, -0.351013, -0.0846484, 1.87353, 0.351048, -0.0847435, -1.87372, -0.217373, 1.72229, 0.380574, -1.67578, -0.0726724, 0.866856, 1.74001, -0.075848, -0.753712, 1.35183, -0.0881995, 1.35183, -0.866393, -0.072565, -1.67594, -0.380801, 1.72203, -0.217308, 0.380553, 1.72225, 0.217361, 0.580562, -0.0769258, 1.79989, 1.35193, -0.0882641, -1.35193, -1.2133, -0.0726085, 1.44466, -1.87373, -0.0847442, 0.351049, -0.0548204, 1.29223, -0.825409, 0.328505, 1.2903, 0.766856, 0.766874, 1.29031, -0.328513, -1.44442, -0.072456, -1.21346, -0.825219, 1.29232, 0.0548307, -0.351048, -0.084744, -1.87373, 1.73993, -0.0758054, 0.753677, -0.437493, 1.28944, -0.710883, -0.710655, 1.28951, 0.437564, 1.87315, -0.0842727, -0.350941, 0.825403, 1.29223, 0.05482, 0.437188, 1.28948, -0.710945, -0.328513, 1.29031, 0.766874, 0.0548201, 1.29223, 0.825405, 0.753908, -0.0756422, -1.73962, -0.71066, 1.28951, -0.437566)
 
-[node name="Anthill" type="RigidBody3D"]
+[node name="Anthill" type="RigidBody3D" node_paths=PackedStringArray("spawnPoint")]
+collision_layer = 7
+collision_mask = 7
+lock_rotation = true
+freeze = true
+freeze_mode = 1
+contact_monitor = true
+max_contacts_reported = 1
 script = ExtResource("1_3k88t")
+Health = 50.0
+thingToSpawn = ExtResource("2_6wrnh")
+reloadTime = 5.0
+spawnPoint = NodePath("Node3D")
+explosion = ExtResource("3_kf56l")
+metadata/Bad = 4.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.177633, 0, -0.520931)
 shape = SubResource("ConvexPolygonShape3D_gujqj")
 
 [node name="anthill" parent="." instance=ExtResource("1_jqdne")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.177633, 0, -0.520931)
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
 [editable path="anthill"]

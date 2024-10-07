@@ -6,6 +6,14 @@ public partial class CameraZoomer : Camera3D
     [Export]
     RayCast3D cast;
 
+    public override void _Ready()
+    {
+        GetTree().CreateTimer(0.1, false).Timeout += () =>
+        {
+            GlobalPosition = ((Node3D)GetParent()).GlobalPosition;
+        };
+    }
+
     public override void _Process(double delta)
     {
         if (cast.IsColliding())
@@ -23,6 +31,10 @@ public partial class CameraZoomer : Camera3D
             if (pos.Z < 0.3)
             {
                 pos.Z += (float)(1f * delta);
+            }
+            else if (pos.Z > -0.3)
+            {
+                pos.Z -= (float)(1f * delta);
             }
             Position = pos;
         }
