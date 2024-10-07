@@ -1,0 +1,136 @@
+[gd_scene load_steps=12 format=3 uid="uid://l8wbb77wmmav"]
+
+[ext_resource type="PackedScene" uid="uid://dafrcq72bjg88" path="res://scenes/test_game/PlayerDrop.tscn" id="1_1stj6"]
+[ext_resource type="Material" uid="uid://wkas6nlfxkul" path="res://assets/materials/terrain_material.tres" id="1_v1ote"]
+[ext_resource type="Texture2D" uid="uid://bx8vvynigtvqq" path="res://assets/materials/anthill_albedo.png" id="2_4cjlm"]
+[ext_resource type="PackedScene" uid="uid://diomwv7eas3c3" path="res://scenes/test_game/Ring.tscn" id="4_yhs8s"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xjpyp"]
+
+[sub_resource type="Sky" id="Sky_bxeyl"]
+sky_material = SubResource("ProceduralSkyMaterial_xjpyp")
+
+[sub_resource type="Environment" id="Environment_xyiv1"]
+background_mode = 2
+background_canvas_max_layer = -100
+sky = SubResource("Sky_bxeyl")
+tonemap_mode = 2
+ssil_enabled = true
+glow_enabled = true
+glow_intensity = 1.1
+glow_strength = 0.22
+glow_bloom = 1.0
+glow_blend_mode = 1
+glow_hdr_threshold = 1.11
+glow_hdr_scale = 1.55
+glow_hdr_luminance_cap = 116.36
+volumetric_fog_density = 0.024
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kv7k8"]
+albedo_texture = ExtResource("2_4cjlm")
+uv1_scale = Vector3(0.04, 0.04, 0.04)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u3wu2"]
+emission_enabled = true
+emission = Color(1.68458e-07, 0.403751, 0.416308, 1)
+emission_energy_multiplier = 300.0
+
+[sub_resource type="TextMesh" id="TextMesh_prqc0"]
+material = SubResource("StandardMaterial3D_u3wu2")
+text = "Flight School"
+font_size = 71
+pixel_size = 0.04
+depth = 0.529
+
+[sub_resource type="TextMesh" id="TextMesh_8q2br"]
+material = SubResource("StandardMaterial3D_u3wu2")
+text = "^ ^ ^
+^ ^ ^"
+font_size = 71
+pixel_size = 0.04
+depth = 0.529
+
+[node name="Level0" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_xyiv1")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.866025, 0.12941, 0.482963, -0.493568, 0.0668276, 0.867136, 0.0799406, -0.989337, 0.121747, 7.91035, 19.9035, 21.4468)
+shadow_enabled = true
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.44988, -0.175419, -22)
+material_override = ExtResource("1_v1ote")
+size = Vector3(25.8438, 15, 1)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.182274, 6.13205, -83.2464)
+material_override = SubResource("StandardMaterial3D_kv7k8")
+flip_faces = true
+size = Vector3(21.6177, 14.3452, 200)
+
+[node name="PlayerDrop" parent="." instance=ExtResource("1_1stj6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.27067, 0, -0.0219219)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0907046, 1.37415, -21.4651)
+mesh = SubResource("TextMesh_prqc0")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0907046, 4.36139, -21.6053)
+mesh = SubResource("TextMesh_8q2br")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, -10.3721, 10.4204, -21.6053)
+mesh = SubResource("TextMesh_8q2br")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 10.8662, 10.4204, -21.6053)
+mesh = SubResource("TextMesh_8q2br")
+
+[node name="Ring" parent="." instance=ExtResource("4_yhs8s")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -1.01346, 5, -44.1037)
+
+[node name="Ring2" parent="." instance=ExtResource("4_yhs8s")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -1.01346, 5, -47.1037)
+
+[node name="Ring3" parent="." instance=ExtResource("4_yhs8s")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -1.01346, 5, -50.1037)
+
+[node name="Ring4" parent="." instance=ExtResource("4_yhs8s")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -1.01346, 5, -53.1037)
+
+[node name="Ring5" parent="." instance=ExtResource("4_yhs8s")]
+transform = Transform3D(0.965926, 0.258819, -1.13133e-08, 0, -4.37114e-08, -1, -0.258819, 0.965926, -4.2222e-08, -1.01346, 5, -56.1037)
+
+[node name="Ring6" parent="." instance=ExtResource("4_yhs8s")]
+transform = Transform3D(0.965926, 0.258819, -1.13133e-08, 0, -4.37114e-08, -1, -0.258819, 0.965926, -4.2222e-08, -1.78992, 5, -59.0014)
+
+[node name="Ring7" parent="." instance=ExtResource("4_yhs8s")]
+transform = Transform3D(0.874391, 0.485222, -1.13133e-08, 1.05947e-08, -4.2408e-08, -1, -0.485222, 0.874391, -4.2222e-08, -3.73081, 5, -62.499)
+
+[node name="Ring8" parent="." instance=ExtResource("4_yhs8s")]
+transform = Transform3D(0.947796, 0.318877, -1.13133e-08, 2.74085e-09, -4.36254e-08, -1, -0.318877, 0.947796, -4.2222e-08, -5.40299, 5, -66.087)
+
+[node name="Ring9" parent="." instance=ExtResource("4_yhs8s")]
+transform = Transform3D(0.987339, 0.158623, -1.13133e-08, -4.47271e-09, -4.3482e-08, -1, -0.158623, 0.987339, -4.2222e-08, -6.52342, 5, -69.5796)
+
+[node name="Ring10" parent="." instance=ExtResource("4_yhs8s")]
+transform = Transform3D(0.999718, 0.0237692, -1.13133e-08, -1.03066e-08, -4.24789e-08, -1, -0.0237692, 0.999718, -4.2222e-08, -6.94187, 5, -72.6041)
+
+[node name="Ring11" parent="." instance=ExtResource("4_yhs8s")]
+transform = Transform3D(0.993631, -0.112683, -1.13133e-08, -1.5999e-08, -4.06782e-08, -1, 0.112683, 0.993631, -4.2222e-08, -7.03179, 5, -76.3863)
+
+[node name="Ring12" parent="." instance=ExtResource("4_yhs8s")]
+transform = Transform3D(0.678064, -0.211687, -8.03631e-09, -1.6609e-08, -2.62343e-08, -0.710339, 0.211687, 0.678064, -2.99919e-08, -6.92912, 5, -80.3354)
+
+[node name="Ring13" parent="." instance=ExtResource("4_yhs8s")]
+transform = Transform3D(0.450824, -0.140744, -5.3431e-09, -1.10428e-08, -1.74424e-08, -0.472283, 0.140744, 0.450824, -1.99407e-08, -5.81023, 5, -83.9194)
+
+[node name="Ring14" parent="." instance=ExtResource("4_yhs8s")]
+transform = Transform3D(0.649182, -0.20267, -7.694e-09, -1.59015e-08, -2.51168e-08, -0.680082, 0.20267, 0.649182, -2.87144e-08, -5.16113, 5, -85.9986)
+
+[node name="Ring15" parent="." instance=ExtResource("4_yhs8s")]
+transform = Transform3D(0.952848, -0.297472, -1.1293e-08, -2.33398e-08, -3.68657e-08, -0.998202, 0.297472, 0.952848, -4.21461e-08, -4.35043, 5, -88.5954)

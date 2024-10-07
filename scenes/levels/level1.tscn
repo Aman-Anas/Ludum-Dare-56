@@ -11,13 +11,13 @@
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_p83lm"]
 
-[sub_resource type="Sky" id="Sky_bxeyl"]
+[sub_resource type="Sky" id="Sky_oktpt"]
 sky_material = SubResource("ProceduralSkyMaterial_p83lm")
 
 [sub_resource type="Environment" id="Environment_yavik"]
 background_mode = 2
 background_canvas_max_layer = -100
-sky = SubResource("Sky_bxeyl")
+sky = SubResource("Sky_oktpt")
 tonemap_mode = 2
 ssil_enabled = true
 glow_enabled = true
@@ -394,6 +394,7 @@ script = ExtResource("6_xvco3")
 
 [node name="Ring" parent="." instance=ExtResource("7_wgx18")]
 transform = Transform3D(14.622, 0, 0, 0, -6.3915e-07, -14.622, 0, 14.622, -6.3915e-07, 661.788, 89.8687, 19.6142)
+inLvl1 = true
 exit = true
 nextScene = ExtResource("8_bovrb")
 
@@ -403,12 +404,16 @@ texture = SubResource("GradientTexture2D_263od")
 
 [node name="Ring2" parent="." instance=ExtResource("7_wgx18")]
 transform = Transform3D(14.622, 0, 0, 0, -6.3915e-07, -14.622, 0, 14.622, -6.3915e-07, 661.788, 89.8687, -28.9092)
+inLvl1 = true
 
 [node name="Ring3" parent="." instance=ExtResource("7_wgx18")]
 transform = Transform3D(14.622, 0, 0, 0, -6.3915e-07, -14.622, 0, 14.622, -6.3915e-07, 661.788, 89.8687, -73.0761)
+inLvl1 = true
 
 [node name="Ring4" parent="." instance=ExtResource("7_wgx18")]
 transform = Transform3D(14.622, 0, 0, 0, -6.3915e-07, -14.622, 0, 14.622, -6.3915e-07, 661.788, 89.8687, -116.943)
+inLvl1 = true
 
 [node name="Ring5" parent="." instance=ExtResource("7_wgx18")]
 transform = Transform3D(14.622, 0, 0, 0, -6.3915e-07, -14.622, 0, 14.622, -6.3915e-07, 661.788, 89.8687, -174.267)
+inLvl1 = true

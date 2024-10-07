@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dd7wtsnynoibe"]
+[gd_scene load_steps=6 format=3 uid="uid://dd7wtsnynoibe"]
 
 [ext_resource type="PackedScene" uid="uid://cqmg4nlyt3jc0" path="res://scenes/main_menu/TitleInterface.tscn" id="1_frdvw"]
+[ext_resource type="PackedScene" uid="uid://l8wbb77wmmav" path="res://scenes/levels/level0.tscn" id="2_e5esf"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ayed3"]
 
@@ -27,6 +28,5 @@ fov = 90.0
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_c8jin")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Interface" parent="CanvasLayer" instance=ExtResource("1_frdvw")]
+[node name="Interface" parent="." instance=ExtResource("1_frdvw")]
+mainGameScene = ExtResource("2_e5esf")

@@ -20,6 +20,12 @@ public partial class Pause : Control
     Button backButton;
 
     [Export]
+    Button title;
+
+    [Export(PropertyHint.File)]
+    string titlePath;
+
+    [Export]
     Control pauseMenuRoot;
 
     [Export]
@@ -33,6 +39,11 @@ public partial class Pause : Control
         menu = new SubMenuHelper(backButton, pauseMenuRoot);
         resumeButton.Pressed += Resume;
         settingsButton.Pressed += () => menu.SetSubMenu(settingsMenuRoot);
+        title.Pressed += () =>
+        {
+            GetTree().Paused = false;
+            GetTree().ChangeSceneToFile(titlePath);
+        };
         quitButton.Pressed += () => GetTree().Quit();
     }
 

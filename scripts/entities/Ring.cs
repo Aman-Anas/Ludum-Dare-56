@@ -11,6 +11,9 @@ public partial class Ring : StaticBody3D
     Area3D area;
 
     [Export]
+    bool inLvl1;
+
+    [Export]
     bool exit;
 
     [Export]
@@ -25,7 +28,7 @@ public partial class Ring : StaticBody3D
 
     private void potato(Node3D body)
     {
-        if (Manager.Instance.Data.LevelOneClearedBits < 17)
+        if (inLvl1 && Manager.Instance.Data.LevelOneClearedBits < 17)
         {
             return;
         }
