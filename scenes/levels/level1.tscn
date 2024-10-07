@@ -29,11 +29,6 @@ glow_hdr_scale = 1.55
 glow_hdr_luminance_cap = 116.36
 volumetric_fog_density = 0.024
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o8406"]
-emission_enabled = true
-emission = Color(0.014705, 0.620009, 0.775694, 1)
-emission_energy_multiplier = 12.51
-
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kb33k"]
 load_path = "res://.godot/imported/anthill_albedo.png-b3cde02984142c3d99a46274dbbc60f5.s3tc.ctex"
 
@@ -50,6 +45,11 @@ emission_texture = SubResource("CompressedTexture2D_v5rxo")
 normal_enabled = true
 normal_texture = SubResource("CompressedTexture2D_cyxat")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o8406"]
+emission_enabled = true
+emission = Color(0.014705, 0.620009, 0.775694, 1)
+emission_energy_multiplier = 12.51
+
 [node name="Level1" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -59,84 +59,294 @@ environment = SubResource("Environment_yavik")
 transform = Transform3D(0.866025, 0.12941, 0.482963, -0.493568, 0.0668275, 0.867136, 0.0799406, -0.989337, 0.121747, -13.5504, 10.1729, 22.6275)
 shadow_enabled = true
 
-[node name="Anthill" parent="." instance=ExtResource("1_qo8ha")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.5222, -0.363705, -8.08608)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="Anthill"]
-transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -11.5313, -0.148759, -6.94587)
-material_override = SubResource("StandardMaterial3D_o8406")
-size = Vector3(26, 0.151367, 0.875)
-
-[node name="Anthill2" parent="." instance=ExtResource("1_qo8ha")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5219, -0.611043, -8.17273)
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="Anthill2"]
-transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 12.1132, 0.0985792, -6.64145)
-material_override = SubResource("StandardMaterial3D_o8406")
-size = Vector3(26, 0.151367, 0.875)
-
-[node name="Anthill5" parent="." instance=ExtResource("1_qo8ha")]
-transform = Transform3D(0.387837, 0, 0.921728, 0, 1, 0, -0.921728, 0, 0.387837, 15.9118, -0.611043, 41.711)
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="Anthill5"]
-transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 12.1132, 0.0985792, -6.64145)
-material_override = SubResource("StandardMaterial3D_o8406")
-size = Vector3(26, 0.151367, 0.875)
-
-[node name="Anthill3" parent="." instance=ExtResource("1_qo8ha")]
-transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 18.0384, -0.419867, -63.1954)
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="Anthill3"]
-transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 4.79514, 0.0985792, -2.41636)
-material_override = SubResource("StandardMaterial3D_o8406")
-size = Vector3(9.09961, 0.151367, 0.875)
-
-[node name="Anthill6" parent="." instance=ExtResource("1_qo8ha")]
-transform = Transform3D(-0.687442, 0, 0.726239, 0, 1, 0, -0.726239, 0, -0.687442, -16.1408, -0.035223, -20.9275)
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="Anthill6"]
-transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 4.79514, 0.0985792, -2.41636)
-material_override = SubResource("StandardMaterial3D_o8406")
-size = Vector3(9.09961, 0.151367, 0.875)
-
-[node name="Anthill4" parent="." instance=ExtResource("1_qo8ha")]
-transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -23.411, -0.035223, -35.836)
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="Anthill4"]
-transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 4.79514, 0.0985792, -2.41636)
-material_override = SubResource("StandardMaterial3D_o8406")
-size = Vector3(9.09961, 0.151367, 0.875)
-
 [node name="PlayerDrop" parent="." instance=ExtResource("3_k12k7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75743, 200.527, 17.4217)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75743, 104.1, 17.4217)
 
 [node name="Ant" parent="." instance=ExtResource("4_6yto2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.89542, 0.598245, 19.3966)
 
-[node name="antlevel" parent="." instance=ExtResource("5_y02dk")]
-transform = Transform3D(0.734749, 0, 0, 0, -0.734749, 6.42338e-08, 0, -6.42338e-08, -0.734749, 6.04304, 32.8386, -17.3511)
-
-[node name="anttower" parent="." instance=ExtResource("6_3e8eo")]
-transform = Transform3D(2.46983, 0, 0, 0, 2.46983, 0, 0, 0, 2.46983, -27.2747, -2.89085, -23.3234)
-
-[node name="anttower2" parent="." instance=ExtResource("6_3e8eo")]
-transform = Transform3D(5.79795, 0, 0, 0, 5.79795, 0, 0, 0, 5.79795, 71.6075, -10.0725, 23.0797)
-
-[node name="anttower3" parent="." instance=ExtResource("6_3e8eo")]
-transform = Transform3D(2.46983, 0, 0, 0, 2.46983, 0, 0, 0, 2.46983, 13.6236, -2.45813, -49.4003)
-
-[node name="anttower9" parent="." instance=ExtResource("6_3e8eo")]
-transform = Transform3D(2.46983, 0, 0, 0, 2.46983, 0, 0, 0, 2.46983, 13.6236, -2.45813, 15.6093)
-
-[node name="anttower4" parent="." instance=ExtResource("6_3e8eo")]
-transform = Transform3D(2.46983, 0, 0, 0, 2.46983, 0, 0, 0, 2.46983, 39.762, -1.18002, -20.1554)
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="."]
-transform = Transform3D(-228.939, 0, -2.00145e-05, 0, 228.939, 0, 2.00145e-05, 0, -228.939, 25.621, 113.963, -4.85118)
+[node name="Room1" type="CSGBox3D" parent="."]
+transform = Transform3D(-228.939, 0, -2.00145e-05, 0, 228.939, 0, 2.00145e-05, 0, -228.939, 25.621, 56.706, -4.851)
 material_override = SubResource("ORMMaterial3D_crh83")
 use_collision = true
 flip_faces = true
-size = Vector3(1.23096, 1, 1)
+size = Vector3(1.231, 0.5, 1)
+
+[node name="Tunnel1" type="CSGCylinder3D" parent="Room1"]
+transform = Transform3D(-3.27835e-09, 0.075, -6.55672e-09, -0.075, -3.27835e-09, -6.55671e-09, -6.55671e-09, 6.55672e-09, 0.075, -0.730071, -0.198929, -6.89179e-08)
+flip_faces = true
+height = 3.995
+sides = 12
+
+[node name="Room2" type="CSGBox3D" parent="Room1"]
+transform = Transform3D(1, 0, -2.84217e-14, 0, 1, 0, 2.84217e-14, 0, 1, -1.33643, 0, 0.780423)
+material_override = SubResource("ORMMaterial3D_crh83")
+use_collision = true
+flip_faces = true
+size = Vector3(0.931, 0.5, 1.805)
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="Room1"]
+transform = Transform3D(1, 0, -4.26326e-14, 0, 1, 0, 4.26326e-14, 0, 1, -2.08382, -0.147951, 1.65313)
+flip_faces = true
+inner_radius = 0.57
+outer_radius = 0.769
+sides = 12
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Room1/CSGTorus3D"]
+transform = Transform3D(1, 0, -3.55271e-14, 0, 1, 0, 3.55271e-14, 0, 1, -0.069046, 0, -0.611204)
+operation = 2
+size = Vector3(2.02344, 0.335, 1)
+
+[node name="Room3" type="CSGBox3D" parent="Room1"]
+transform = Transform3D(0.999992, 0, -2.98428e-13, 0, 0.999992, 0, 2.98428e-13, 0, 0.999992, -2.77127, 0.158447, 0.780423)
+material_override = SubResource("ORMMaterial3D_crh83")
+use_collision = true
+flip_faces = true
+size = Vector3(1.34135, 0.816895, 1.805)
+
+[node name="antlevel1" parent="." instance=ExtResource("5_y02dk")]
+transform = Transform3D(0.734749, 0, 0, 0, -0.734749, 6.42338e-08, 0, -6.42338e-08, -0.734749, 6.04304, 32.8386, -17.3511)
+
+[node name="AntLeg1" type="Node3D" parent="antlevel1"]
+transform = Transform3D(1.36101, 0, 0, 0, -1.36101, -1.18983e-07, 0, 1.18983e-07, -1.36101, 44.8414, 46.2996, 3.81667)
+
+[node name="anttower4" parent="antlevel1/AntLeg1" instance=ExtResource("6_3e8eo")]
+transform = Transform3D(2.46983, 0, 0, 0, 2.46983, 0, 0, 0, 2.46983, 0, 0, 0)
+
+[node name="Anthill" parent="antlevel1/AntLeg1" instance=ExtResource("1_qo8ha")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.7602, 0.816315, 12.0693)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="antlevel1/AntLeg1/Anthill"]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -11.5313, -0.148759, -6.94587)
+material_override = SubResource("StandardMaterial3D_o8406")
+size = Vector3(26, 0.151367, 0.875)
+
+[node name="Anthill2" parent="antlevel1/AntLeg1" instance=ExtResource("1_qo8ha")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.2401, 0.568977, 11.9827)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="antlevel1/AntLeg1/Anthill2"]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 12.1132, 0.0985792, -6.64145)
+material_override = SubResource("StandardMaterial3D_o8406")
+size = Vector3(26, 0.151367, 0.875)
+
+[node name="AntLeg2" type="Node3D" parent="antlevel1"]
+transform = Transform3D(1.36101, 0, 0, 0, -1.36101, -1.18983e-07, 0, 1.18983e-07, -1.36101, 10.3172, 48.0392, -44.8594)
+
+[node name="anttower9" parent="antlevel1/AntLeg2" instance=ExtResource("6_3e8eo")]
+transform = Transform3D(2.46983, 0, 0, 0, 2.46983, 0, 0, 0, 2.46983, 0, 0, 0)
+
+[node name="Anthill5" parent="antlevel1/AntLeg2" instance=ExtResource("1_qo8ha")]
+transform = Transform3D(0.387837, 0, 0.921728, 0, 1, 0, -0.921728, 0, 0.387837, 2.2882, 1.84709, 26.1017)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="antlevel1/AntLeg2/Anthill5"]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 12.1132, 0.0985792, -6.64145)
+material_override = SubResource("StandardMaterial3D_o8406")
+size = Vector3(26, 0.151367, 0.875)
+
+[node name="AntLeg3" type="Node3D" parent="antlevel1"]
+transform = Transform3D(1.36101, 0, 0, 0, -1.36101, -1.18983e-07, 0, 1.18983e-07, -1.36101, -45.3457, 48.6281, 8.12835)
+
+[node name="anttower" parent="antlevel1/AntLeg3" instance=ExtResource("6_3e8eo")]
+transform = Transform3D(2.46983, 0, 0, 0, 2.46983, 0, 0, 0, 2.46983, 0, 0, 0)
+
+[node name="Anthill4" parent="antlevel1/AntLeg3" instance=ExtResource("1_qo8ha")]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 3.8637, 2.85563, -12.5126)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="antlevel1/AntLeg3/Anthill4"]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 4.79514, 0.0985792, -2.41636)
+material_override = SubResource("StandardMaterial3D_o8406")
+size = Vector3(9.09961, 0.151367, 0.875)
+
+[node name="Anthill6" parent="antlevel1/AntLeg3" instance=ExtResource("1_qo8ha")]
+transform = Transform3D(-0.687442, 0, 0.726239, 0, 1, 0, -0.726239, 0, -0.687442, 11.1339, 2.85563, 2.3959)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="antlevel1/AntLeg3/Anthill6"]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 4.79514, 0.0985792, -2.41636)
+material_override = SubResource("StandardMaterial3D_o8406")
+size = Vector3(9.09961, 0.151367, 0.875)
+
+[node name="AntLeg4" type="Node3D" parent="antlevel1"]
+transform = Transform3D(1.36101, 0, 0, 0, -1.36101, -1.18983e-07, 0, 1.18983e-07, -1.36101, 10.3172, 48.0392, 43.6192)
+
+[node name="anttower3" parent="antlevel1/AntLeg4" instance=ExtResource("6_3e8eo")]
+transform = Transform3D(2.46983, 0, 0, 0, 2.46983, 0, 0, 0, 2.46983, 0, 0, 0)
+
+[node name="Anthill3" parent="antlevel1/AntLeg4" instance=ExtResource("1_qo8ha")]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 4.4148, 2.03826, -13.7951)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="antlevel1/AntLeg4/Anthill3"]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 4.79514, 0.0985792, -2.41636)
+material_override = SubResource("StandardMaterial3D_o8406")
+size = Vector3(9.09961, 0.151367, 0.875)
+
+[node name="antlevel2" parent="." instance=ExtResource("5_y02dk")]
+transform = Transform3D(0.734749, 0, 0, 0, -0.734749, 6.42338e-08, 0, -6.42338e-08, -0.734749, 341.818, 32.8386, -116.159)
+
+[node name="AntLeg1" type="Node3D" parent="antlevel2"]
+transform = Transform3D(1.36101, 0, 0, 0, -1.36101, -1.18983e-07, 0, 1.18983e-07, -1.36101, 44.8414, 46.2996, 3.81667)
+
+[node name="anttower4" parent="antlevel2/AntLeg1" instance=ExtResource("6_3e8eo")]
+transform = Transform3D(2.46983, 0, 0, 0, 2.46983, 0, 0, 0, 2.46983, 0, 0, 0)
+
+[node name="Anthill" parent="antlevel2/AntLeg1" instance=ExtResource("1_qo8ha")]
+transform = Transform3D(0.804345, 0, 0.594163, 0, 1, 0, -0.594163, 0, 0.804345, 27.8483, 0.816315, -2.79346)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="antlevel2/AntLeg1/Anthill"]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -11.5313, -0.148759, -6.94587)
+material_override = SubResource("StandardMaterial3D_o8406")
+size = Vector3(26, 0.151367, 0.875)
+
+[node name="Anthill2" parent="antlevel2/AntLeg1" instance=ExtResource("1_qo8ha")]
+transform = Transform3D(0.964921, 0, -0.262543, 0, 1, 0, 0.262543, 0, 0.964921, -28.5505, 0.568977, 7.74783)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="antlevel2/AntLeg1/Anthill2"]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 12.1132, 0.0985792, -6.64145)
+material_override = SubResource("StandardMaterial3D_o8406")
+size = Vector3(26, 0.151367, 0.875)
+
+[node name="AntLeg2" type="Node3D" parent="antlevel2"]
+transform = Transform3D(1.36101, 0, 0, 0, -1.36101, -1.18983e-07, 0, 1.18983e-07, -1.36101, 10.3172, 48.0392, -44.8594)
+
+[node name="anttower9" parent="antlevel2/AntLeg2" instance=ExtResource("6_3e8eo")]
+transform = Transform3D(2.46983, 0, 0, 0, 2.46983, 0, 0, 0, 2.46983, 0, 0, 0)
+
+[node name="Anthill5" parent="antlevel2/AntLeg2" instance=ExtResource("1_qo8ha")]
+transform = Transform3D(0.987892, 0, 0.155142, 0, 1, 0, -0.155142, 0, 0.987892, -21.8176, 1.84709, 17.249)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="antlevel2/AntLeg2/Anthill5"]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 12.1132, 0.0985792, -6.64145)
+material_override = SubResource("StandardMaterial3D_o8406")
+size = Vector3(26, 0.151367, 0.875)
+
+[node name="Anthill6" parent="antlevel2/AntLeg2" instance=ExtResource("1_qo8ha")]
+transform = Transform3D(0.153968, 0, 0.988076, 0, 1, 0, -0.988076, 0, 0.153968, 4.00946, 1.84709, 12.4282)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="antlevel2/AntLeg2/Anthill6"]
+transform = Transform3D(0.878091, 0, 0.478493, 0, 0.999992, 0, -0.478493, 0, 0.878091, 5.96571, 0.0985792, -3.21837)
+material_override = SubResource("StandardMaterial3D_o8406")
+size = Vector3(11.9292, 0.151367, 0.875)
+
+[node name="AntLeg3" type="Node3D" parent="antlevel2"]
+transform = Transform3D(1.36101, 0, 0, 0, -1.36101, -1.18983e-07, 0, 1.18983e-07, -1.36101, -45.3457, 48.6281, 8.12835)
+
+[node name="anttower" parent="antlevel2/AntLeg3" instance=ExtResource("6_3e8eo")]
+transform = Transform3D(2.46983, 0, 0, 0, 2.46983, 0, 0, 0, 2.46983, 0, 0, 0)
+
+[node name="Anthill4" parent="antlevel2/AntLeg3" instance=ExtResource("1_qo8ha")]
+transform = Transform3D(-0.0209076, 0, -0.999782, 0, 1, 0, 0.999782, 0, -0.0209076, -18.5197, 2.85563, -32.6324)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="antlevel2/AntLeg3/Anthill4"]
+transform = Transform3D(0.866025, 0, 0.5, 0, 0.999994, 0, -0.5, 0, 0.866025, 16.3281, 0.0985792, -9.07492)
+material_override = SubResource("StandardMaterial3D_o8406")
+size = Vector3(35.7339, 0.151367, 0.875)
+
+[node name="Anthill6" parent="antlevel2/AntLeg3" instance=ExtResource("1_qo8ha")]
+transform = Transform3D(0.972113, 0, 0.234514, 0, 1, 0, -0.234514, 0, 0.972113, -24.041, 2.85563, 22.3548)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="antlevel2/AntLeg3/Anthill6"]
+transform = Transform3D(0.866025, 0, 0.5, 0, 0.999997, 0, -0.5, 0, 0.866025, 14.1756, 0.0985792, -7.83217)
+material_override = SubResource("StandardMaterial3D_o8406")
+size = Vector3(30.7628, 0.151367, 0.875)
+
+[node name="Anthill7" parent="antlevel2/AntLeg3" instance=ExtResource("1_qo8ha")]
+transform = Transform3D(0.257369, 0, 0.966313, 0, 1, 0, -0.966313, 0, 0.257369, 5.28943, 2.85563, 21.2866)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="antlevel2/AntLeg3/Anthill7"]
+transform = Transform3D(0.866025, 0, 0.5, 0, 0.999999, 0, -0.5, 0, 0.866025, 9.99895, 0.0985792, -5.42075)
+material_override = SubResource("StandardMaterial3D_o8406")
+size = Vector3(21.1172, 0.151367, 0.875)
+
+[node name="AntLeg4" type="Node3D" parent="antlevel2"]
+transform = Transform3D(1.36101, 0, 0, 0, -1.36101, -1.18983e-07, 0, 1.18983e-07, -1.36101, 10.3172, 48.0392, 43.6192)
+
+[node name="anttower3" parent="antlevel2/AntLeg4" instance=ExtResource("6_3e8eo")]
+transform = Transform3D(2.46983, 0, 0, 0, 2.46983, 0, 0, 0, 2.46983, 0, 0, 0)
+
+[node name="Anthill3" parent="antlevel2/AntLeg4" instance=ExtResource("1_qo8ha")]
+transform = Transform3D(-0.47544, 0, -0.879749, 0, 1, 0, 0.879749, 0, -0.47544, -0.0466309, 2.03826, -27.3457)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="antlevel2/AntLeg4/Anthill3"]
+transform = Transform3D(0.866025, 0, 0.5, 0, 0.999995, 0, -0.5, 0, 0.866025, 11.6206, 0.0985792, -6.35706)
+material_override = SubResource("StandardMaterial3D_o8406")
+size = Vector3(24.8623, 0.151367, 0.875)
+
+[node name="antlevel3" parent="." instance=ExtResource("5_y02dk")]
+transform = Transform3D(0.672338, 3.28708e-08, -0.29634, 6.42338e-08, -0.734749, 6.42338e-08, -0.29634, -8.46845e-08, -0.672338, 344.95, 32.8386, -265.294)
+
+[node name="AntLeg1" type="Node3D" parent="antlevel3"]
+transform = Transform3D(1.36101, 0, 0, 0, -1.36101, -1.18983e-07, 0, 1.18983e-07, -1.36101, 44.8414, 46.2996, 3.81667)
+
+[node name="anttower4" parent="antlevel3/AntLeg1" instance=ExtResource("6_3e8eo")]
+transform = Transform3D(2.46983, 0, 0, 0, 2.46983, 0, 0, 0, 2.46983, 0, 0, 0)
+
+[node name="Anthill" parent="antlevel3/AntLeg1" instance=ExtResource("1_qo8ha")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.7602, 0.816315, 12.0693)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="antlevel3/AntLeg1/Anthill"]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -11.5313, -0.148759, -6.94587)
+material_override = SubResource("StandardMaterial3D_o8406")
+size = Vector3(26, 0.151367, 0.875)
+
+[node name="Anthill2" parent="antlevel3/AntLeg1" instance=ExtResource("1_qo8ha")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.2401, 0.568977, 11.9827)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="antlevel3/AntLeg1/Anthill2"]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 12.1132, 0.0985792, -6.64145)
+material_override = SubResource("StandardMaterial3D_o8406")
+size = Vector3(26, 0.151367, 0.875)
+
+[node name="AntLeg2" type="Node3D" parent="antlevel3"]
+transform = Transform3D(1.36101, 0, 0, 0, -1.36101, -1.18983e-07, 0, 1.18983e-07, -1.36101, 10.3172, 48.0392, -44.8594)
+
+[node name="anttower9" parent="antlevel3/AntLeg2" instance=ExtResource("6_3e8eo")]
+transform = Transform3D(2.46983, 0, 0, 0, 2.46983, 0, 0, 0, 2.46983, 0, 0, 0)
+
+[node name="Anthill5" parent="antlevel3/AntLeg2" instance=ExtResource("1_qo8ha")]
+transform = Transform3D(0.387837, 0, 0.921728, 0, 1, 0, -0.921728, 0, 0.387837, 2.2882, 1.84709, 26.1017)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="antlevel3/AntLeg2/Anthill5"]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 12.1132, 0.0985792, -6.64145)
+material_override = SubResource("StandardMaterial3D_o8406")
+size = Vector3(26, 0.151367, 0.875)
+
+[node name="AntLeg3" type="Node3D" parent="antlevel3"]
+transform = Transform3D(1.36101, 0, 0, 0, -1.36101, -1.18983e-07, 0, 1.18983e-07, -1.36101, -45.3457, 48.6281, 8.12835)
+
+[node name="anttower" parent="antlevel3/AntLeg3" instance=ExtResource("6_3e8eo")]
+transform = Transform3D(2.46983, 0, 0, 0, 2.46983, 0, 0, 0, 2.46983, 0, 0, 0)
+
+[node name="Anthill4" parent="antlevel3/AntLeg3" instance=ExtResource("1_qo8ha")]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 3.8637, 2.85563, -12.5126)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="antlevel3/AntLeg3/Anthill4"]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 4.79514, 0.0985792, -2.41636)
+material_override = SubResource("StandardMaterial3D_o8406")
+size = Vector3(9.09961, 0.151367, 0.875)
+
+[node name="Anthill6" parent="antlevel3/AntLeg3" instance=ExtResource("1_qo8ha")]
+transform = Transform3D(-0.687442, 0, 0.726239, 0, 1, 0, -0.726239, 0, -0.687442, 11.1339, 2.85563, 2.3959)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="antlevel3/AntLeg3/Anthill6"]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 4.79514, 0.0985792, -2.41636)
+material_override = SubResource("StandardMaterial3D_o8406")
+size = Vector3(9.09961, 0.151367, 0.875)
+
+[node name="AntLeg4" type="Node3D" parent="antlevel3"]
+transform = Transform3D(1.36101, 0, 0, 0, -1.36101, -1.18983e-07, 0, 1.18983e-07, -1.36101, 10.3172, 48.0392, 43.6192)
+
+[node name="anttower3" parent="antlevel3/AntLeg4" instance=ExtResource("6_3e8eo")]
+transform = Transform3D(2.46983, 0, 0, 0, 2.46983, 0, 0, 0, 2.46983, 0, 0, 0)
+
+[node name="Anthill3" parent="antlevel3/AntLeg4" instance=ExtResource("1_qo8ha")]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 4.4148, 2.03826, -13.7951)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="antlevel3/AntLeg4/Anthill3"]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 4.79514, 0.0985792, -2.41636)
+material_override = SubResource("StandardMaterial3D_o8406")
+size = Vector3(9.09961, 0.151367, 0.875)
+
+[node name="anttower2" parent="." instance=ExtResource("6_3e8eo")]
+transform = Transform3D(5.79795, 0, 0, 0, 5.79795, 0, 0, 0, 5.79795, 71.6075, -10.0725, 23.0797)
 
 [node name="anttower5" parent="." instance=ExtResource("6_3e8eo")]
 transform = Transform3D(8.44123, 0, 0, 0, 8.44123, 0, 0, 0, 8.44123, -70.8321, -19.2694, 22.6048)
@@ -146,6 +356,43 @@ transform = Transform3D(8.44123, 0, 0, 0, 8.44123, 0, 0, 0, 8.44123, 4.84021, -2
 
 [node name="anttower7" parent="." instance=ExtResource("6_3e8eo")]
 transform = Transform3D(0.0590214, 0, 0, 0, 0.0590214, 0, 0, 0, 0.0590214, 1.64621, -0.304276, -16.0596)
+
+[node name="anttower3" parent="." instance=ExtResource("6_3e8eo")]
+transform = Transform3D(5.79795, 0, 0, 0, 5.79795, 0, 0, 0, 5.79795, 271.389, -10.0725, -58.995)
+
+[node name="anttower8" parent="." instance=ExtResource("6_3e8eo")]
+transform = Transform3D(8.44123, 0, 0, 0, 8.44123, 0, 0, 0, 8.44123, 393.322, -19.2694, -81.664)
+
+[node name="anttower9" parent="." instance=ExtResource("6_3e8eo")]
+transform = Transform3D(8.44123, 0, 0, 0, 8.44123, 0, 0, 0, 8.44123, 302.404, -26.513, -194.094)
+
+[node name="anttower4" parent="." instance=ExtResource("6_3e8eo")]
+transform = Transform3D(5.79795, 0, 0, 0, 5.79795, 0, 0, 0, 5.79795, 409.516, -10.0725, -246.696)
+
+[node name="anttower10" parent="." instance=ExtResource("6_3e8eo")]
+transform = Transform3D(8.44123, 0, 0, 0, 8.44123, 0, 0, 0, 8.44123, 282.206, -19.2694, -336.045)
+
+[node name="AntLeg3" type="Node3D" parent="."]
+transform = Transform3D(0.178142, 0, 1.3493, 0, 1.36101, 0, -1.3493, 0, 0.178142, 468.701, -0.743544, -516.298)
+
+[node name="anttower" parent="AntLeg3" instance=ExtResource("6_3e8eo")]
+transform = Transform3D(2.46983, 0, 0, 0, 2.46983, 0, 0, 0, 2.46983, 0, 0, 0)
+
+[node name="Anthill4" parent="AntLeg3" instance=ExtResource("1_qo8ha")]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 3.8637, 2.85563, -12.5126)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="AntLeg3/Anthill4"]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 4.79514, 0.0985792, -2.41636)
+material_override = SubResource("StandardMaterial3D_o8406")
+size = Vector3(9.09961, 0.151367, 0.875)
+
+[node name="Anthill6" parent="AntLeg3" instance=ExtResource("1_qo8ha")]
+transform = Transform3D(-0.687442, 0, 0.726239, 0, 1, 0, -0.726239, 0, -0.687442, 11.1339, 2.85563, 2.3959)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="AntLeg3/Anthill6"]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 4.79514, 0.0985792, -2.41636)
+material_override = SubResource("StandardMaterial3D_o8406")
+size = Vector3(9.09961, 0.151367, 0.875)
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
