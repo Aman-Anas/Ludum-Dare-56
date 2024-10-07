@@ -36,6 +36,5 @@ transform = Transform3D(3.7, 0, 0, 0, 3.7, 0, 0, 0, 3.7, 0, 0, 0)
 
 [node name="Icosphere" parent="explosion" index="0"]
 material_override = SubResource("StandardMaterial3D_7khw5")
-"blend_shapes/Key 1" = 0.0045074
 
 [editable path="explosion"]

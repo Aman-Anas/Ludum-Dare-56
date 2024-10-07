@@ -24,6 +24,6 @@ public partial class CameraGameSmooth : Node3D
 
         var targetRot = target.GlobalBasis.GetRotationQuaternion(); //new Quaternion(target.GlobalBasis);
         var currentRot = GlobalBasis.GetRotationQuaternion();
-        GlobalBasis = new Basis(currentRot.Slerp(targetRot, 0.06f + (0.76f * player.SpeedFloat)));
+        GlobalBasis = new Basis(currentRot.Slerp(targetRot, 0.06f + (0.46f * player.SpeedFloat)));
     }
 }

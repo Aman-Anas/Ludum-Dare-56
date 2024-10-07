@@ -79,5 +79,5 @@ pew = ExtResource("2_i1gbd")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_1wb2y")
-volume_db = -5.0
-pitch_scale = 0.95
+volume_db = -22.102
+pitch_scale = 0.22

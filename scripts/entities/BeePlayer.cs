@@ -28,7 +28,7 @@ public partial class BeePlayer : RigidBody3D
     Vector2 mouseMovement = new();
 
     public const float MOVEMENT_SPEED = 60f;
-    const float MOVEMENT_FORCE = 20f;
+    const float MOVEMENT_FORCE = 40f;
     const float ROTATION_SPEED = 3f;
 
     bool restart = false;
@@ -59,7 +59,7 @@ public partial class BeePlayer : RigidBody3D
         BodyEntered -= HitSomething;
     }
 
-    void HitSomething(Node body)
+    public void HitSomething(Node body)
     {
         if (body.HasMeta("Bad"))
         {

@@ -20,31 +20,40 @@ public partial class EnemySpawner : RigidBody3D
     [Export]
     PackedScene explosion;
 
+    [Export]
+    int maxToSpawn;
+
     public override void _Ready()
     {
-        GetTree().CreateTimer(reloadTime, false).Timeout += SpawnThing;
+        GetTree().CreateTimer(reloadTime, false).Timeout += SpawnThingRepeat;
 
-        BodyEntered += GotHit;
+        // BodyEntered += GotHit;
     }
 
     public override void _ExitTree()
     {
-        BodyEntered -= GotHit;
+        // BodyEntered -= GotHit;
     }
+
+    StringName good = new("Good");
 
     private void GotHit(Node body)
     {
         // GD.Print("oww");
-        if (body.HasMeta("Good"))
+        if (body.HasMeta(good))
         {
-            Health -= (float)body.GetMeta("Good");
-            SpawnThing();
+            Health -= (float)body.GetMeta(good);
         }
         if (Health < 0)
         {
             var boom = explosion.Instantiate<Node3D>();
             GetTree().CurrentScene.AddChild(boom);
             boom.GlobalTransform = GlobalTransform;
+            for (int x = 0; x < 5; x++)
+            {
+                SpawnThing();
+            }
+
             QueueFree();
         }
     }
@@ -54,9 +63,24 @@ public partial class EnemySpawner : RigidBody3D
         var thing = thingToSpawn.Instantiate<Node3D>();
         GetTree().CurrentScene.AddChild(thing);
         thing.GlobalTransform = spawnPoint.GlobalTransform;
-
-        GetTree().CreateTimer(reloadTime, false).Timeout += SpawnThing;
     }
 
-    public override void _Process(double delta) { }
+    void SpawnThingRepeat()
+    {
+        SpawnThing();
+        maxToSpawn--;
+        if (maxToSpawn > 0)
+        {
+            GetTree().CreateTimer(reloadTime, false).Timeout += SpawnThingRepeat;
+        }
+    }
+
+    public override void _PhysicsProcess(double delta)
+    {
+        var colliding = GetCollidingBodies();
+        if (colliding.Count > 0)
+        {
+            GotHit(colliding[0]);
+        }
+    }
 }

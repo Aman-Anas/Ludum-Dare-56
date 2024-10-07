@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c528dv4slqbn7"]
+[gd_scene load_steps=19 format=3 uid="uid://c528dv4slqbn7"]
 
 [ext_resource type="PackedScene" uid="uid://d43nevj16s6p" path="res://scenes/test_game/ingameui.tscn" id="1_0rxwo"]
 [ext_resource type="Material" uid="uid://dour81aelbrs3" path="res://assets/materials/test_material.tres" id="2_ks5h1"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://be68kkhnkgb6u" path="res://scenes/main_menu/Pause.tscn" id="6_euigh"]
 [ext_resource type="PackedScene" uid="uid://cnfn1qrr1c8bj" path="res://scenes/test_game/BeePlayer.tscn" id="7_mv7n7"]
 [ext_resource type="PackedScene" uid="uid://crf33aqia24q7" path="res://scenes/test_game/TestBall.tscn" id="8_gbhpy"]
+[ext_resource type="PackedScene" uid="uid://dii3flj4bju3p" path="res://scenes/levels/Ant.tscn" id="10_esy2k"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4rm7k"]
 
@@ -388,3 +389,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 125.095, 1.84353)
 
 [node name="BeePlayer" parent="." instance=ExtResource("7_mv7n7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.1741, 3.10513, -4.44523)
+
+[node name="Ant" parent="." instance=ExtResource("10_esy2k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.0049, 1.2834, -15.9868)

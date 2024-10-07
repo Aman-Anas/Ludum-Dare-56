@@ -46,13 +46,13 @@ public partial class EnemyShooter : MeshInstance3D
 
     void SpawnThing()
     {
-        var thing = thingToLaunch.Instantiate<RigidBody3D>();
+        var thing = thingToLaunch.Instantiate<EvilPew>();
         GetTree().CurrentScene.AddChild(thing);
         thing.GlobalTransform = spawnPoint.GlobalTransform;
 
         // Add speed
-        var localVelo = new Vector3(0, 0, velocity);
-        thing.LinearVelocity = thing.GlobalBasis * localVelo;
+        // var localVelo = new Vector3(0, 0, velocity);
+        thing.Speed = velocity;
         thing.GetTree().CreateTimer(timeDespawn, false).Timeout += thing.QueueFree;
 
         thing.GetTree().CreateTimer(reloadTime, false).Timeout += SpawnThing;
@@ -65,9 +65,21 @@ public partial class EnemyShooter : MeshInstance3D
             return;
         }
 
-        var targetVec = bee.GlobalPosition - GlobalPosition;
+        // LookAt(bee);
+        var targetVec = bee.GlobalPosition - GlobalPosition; //).Normalized();
+        // marker.GlobalPosition = GlobalPosition + targetVec;
+        // GD.Print(targetVec);
+
         var currentVec = GlobalBasis.Y;
         var diff = new Quaternion(currentVec, targetVec).Normalized();
-        GlobalBasis = new Basis(GlobalBasis.GetRotationQuaternion() + diff);
+        // if (diff.LengthSquared() == 0)
+        // {
+        //     return;
+        // }
+        GlobalRotate(diff.GetAxis().Normalized(), diff.GetAngle());
+        // GlobalRotation = (GlobalBasis.GetRotationQuaternion() + diff).Normalized().GetEuler();
+
+        // var diff = new Quaternion(currentVec, targetVec).Normalized();
+        // GlobalBasis = new Basis(GlobalBasis.GetRotationQuaternion() + diff);
     }
 }

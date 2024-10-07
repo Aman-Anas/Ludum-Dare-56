@@ -44,9 +44,9 @@ public partial class AntEnemy : RigidBody3D, IHealth
         // GD.Print("gothit");
         if (body.HasMeta("Good"))
         {
-            Health -= (float)body.GetMeta("Good");
+            Health = -1;
 
-            GD.Print(Health);
+            // GD.Print(Health);
         }
         if (Health < 0)
         {
@@ -65,13 +65,22 @@ public partial class AntEnemy : RigidBody3D, IHealth
         }
     }
 
-    public override void _Process(double delta)
+    public override void _PhysicsProcess(double delta)
     {
-        // player.
         if (remove)
         {
             QueueFree();
+            return;
         }
+
+        var localVelo = GlobalBasis.Inverse() * LinearVelocity;
+        localVelo.Z = -speed;
+        localVelo.X = 0;
+
+        LinearVelocity = GlobalBasis * localVelo;
+
+        // player.
+
 
         timer += delta;
 
@@ -84,23 +93,14 @@ public partial class AntEnemy : RigidBody3D, IHealth
             // GD.Print(localVec);
             if (localVec.X > 0)
             {
-                Rotation = new(0, Rotation.Y - 0.1f, 0);
+                AngularVelocity = new(0, -3, 0);
             }
             else
             {
-                Rotation = new(0, Rotation.Y + 0.1f, 0);
+                AngularVelocity = new(0, 3, 0);
             }
 
             timer = 0;
         }
-    }
-
-    public override void _PhysicsProcess(double delta)
-    {
-        var localVelo = GlobalBasis.Inverse() * LinearVelocity;
-        localVelo.Z = -speed;
-        localVelo.X = 0;
-
-        LinearVelocity = GlobalBasis * localVelo;
     }
 }

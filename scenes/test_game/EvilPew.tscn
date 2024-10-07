@@ -1,25 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://dfr0h4re5dc8a"]
+[gd_scene load_steps=5 format=3 uid="uid://dfr0h4re5dc8a"]
 
 [ext_resource type="Material" uid="uid://bnlyjnb4pmfec" path="res://assets/materials/EvilPew.tres" id="1_4ftxs"]
+[ext_resource type="Script" path="res://scripts/entities/EvilPew.cs" id="1_dy0ck"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v81bs"]
 margin = 1.262
-size = Vector3(0.1, 0.1, 0.4)
+size = Vector3(0.2, 0.2, 1.2)
 
 [sub_resource type="BoxMesh" id="BoxMesh_r7106"]
-size = Vector3(1, 1, 5)
+size = Vector3(0.2, 0.2, 1.2)
 
 [node name="Pew" type="RigidBody3D"]
-collision_layer = 4
-collision_mask = 3
-continuous_cd = true
+collision_layer = 5
+collision_mask = 2
+script = ExtResource("1_dy0ck")
 metadata/Bad = 2.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.23517e-08, 2.98023e-08, 0)
 shape = SubResource("BoxShape3D_v81bs")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 cast_shadow = 0
 mesh = SubResource("BoxMesh_r7106")
 surface_material_override/0 = ExtResource("1_4ftxs")
