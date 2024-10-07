@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://bvim6njuxyhe8"
-path="res://.godot/imported/Pew.wav-121c6020de4a3337f11b4e136b112d25.sample"
+uid="uid://doh4rk3q386e8"
+path="res://.godot/imported/Pew2.wav-bdac974b05b22b042f1325195d084073.sample"
 
 [deps]
 
-source_file="res://assets/sfx/Pew.wav"
-dest_files=["res://.godot/imported/Pew.wav-121c6020de4a3337f11b4e136b112d25.sample"]
+source_file="res://assets/sfx/Pew2.wav"
+dest_files=["res://.godot/imported/Pew2.wav-bdac974b05b22b042f1325195d084073.sample"]
 
 [params]
 
