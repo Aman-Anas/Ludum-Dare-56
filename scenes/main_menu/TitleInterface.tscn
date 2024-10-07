@@ -142,7 +142,9 @@ grow_vertical = 2
 [node name="Label" type="Label" parent="Help"]
 custom_minimum_size = Vector2(0.1, 0.1)
 layout_mode = 2
-text = "Do you need help? well you've come to the right place. This is the very cool help menu. Hit back to leave. mwahahahahahahahahhahahahahahahaaaa"
+text = "WASD for Speed and roll, Mouse for yaw and pitch.
+
+Keybinds are rebindable via the pause menu."
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3

@@ -1,11 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://dd7wtsnynoibe"]
+[gd_scene load_steps=11 format=3 uid="uid://dd7wtsnynoibe"]
 
 [ext_resource type="PackedScene" uid="uid://cqmg4nlyt3jc0" path="res://scenes/main_menu/TitleInterface.tscn" id="1_frdvw"]
 [ext_resource type="PackedScene" uid="uid://l8wbb77wmmav" path="res://scenes/levels/level0.tscn" id="2_e5esf"]
-[ext_resource type="PackedScene" uid="uid://cnfn1qrr1c8bj" path="res://scenes/test_game/BeePlayer.tscn" id="3_6e5nj"]
-[ext_resource type="PackedScene" uid="uid://dii3flj4bju3p" path="res://scenes/levels/Ant.tscn" id="4_noci4"]
-[ext_resource type="PackedScene" path="res://scenes/test_game/EvilPew.tscn" id="5_g36cu"]
-[ext_resource type="PackedScene" path="res://scenes/test_game/Explosion.tscn" id="6_4lr38"]
+[ext_resource type="PackedScene" uid="uid://bk63wnt16u1q7" path="res://assets/entities/player/funnybee.glb" id="4_7ebg8"]
+[ext_resource type="PackedScene" uid="uid://dfr0h4re5dc8a" path="res://scenes/test_game/EvilPew.tscn" id="5_g36cu"]
+[ext_resource type="PackedScene" uid="uid://b4snowx1yi38v" path="res://scenes/test_game/Explosion.tscn" id="6_4lr38"]
+[ext_resource type="PackedScene" uid="uid://c0o23v8jfdb7j" path="res://assets/entities/ants/ant.glb" id="6_buhhs"]
+[ext_resource type="AudioStream" uid="uid://dutj4gyk0phvq" path="res://assets/sfx/Pew1.wav" id="7_jg513"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ayed3"]
 
@@ -35,28 +36,52 @@ environment = SubResource("Environment_c8jin")
 [node name="Interface" parent="." instance=ExtResource("1_frdvw")]
 mainGameScene = ExtResource("2_e5esf")
 
-[node name="BeePlayer" parent="." instance=ExtResource("3_6e5nj")]
+[node name="BeePlayer" type="Node3D" parent="."]
 transform = Transform3D(-0.62983, 0.183474, -0.754753, -0.176515, 0.912468, 0.369112, 0.75641, 0.365703, -0.542314, -0.704431, 2.04909, 4.46551)
-script = null
 
-[node name="CollisionShape3D" parent="BeePlayer" index="0"]
-disabled = true
+[node name="funnybee" parent="BeePlayer" instance=ExtResource("4_7ebg8")]
+transform = Transform3D(0, 0, 0.49, 0, 0.49, 0, -0.49, 0, -4.47035e-08, 2.38419e-07, -0.0713387, 0.00748706)
 
-[node name="funnybee" parent="BeePlayer/PhysicsSmoother" index="0"]
-transform = Transform3D(-2.14186e-08, 0, 0.49, 0, 0.49, 0, -0.49, 0, -2.14186e-08, 0, -0.0713387, 0.00748718)
+[node name="Node3D" type="Node3D" parent="BeePlayer"]
+transform = Transform3D(1, 2.98023e-08, -2.98023e-08, 2.98023e-08, 1, 1.49012e-08, -2.98023e-08, 0, 1, -2.38419e-07, -2.38419e-07, -0.896656)
 
-[node name="Ant" parent="." instance=ExtResource("4_noci4")]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="BeePlayer"]
+stream = ExtResource("7_jg513")
+volume_db = -15.185
+pitch_scale = 0.41
+
+[node name="Ant" type="Node3D" parent="."]
 transform = Transform3D(-0.93606, 0, 0.351842, 0, 1, 0, -0.351842, 0, -0.93606, 3.83926, 0.805553, 2.37214)
-script = null
+metadata/Bad = 5.0
 
-[node name="ant" parent="Ant" index="0"]
+[node name="ant" parent="Ant" instance=ExtResource("6_buhhs")]
 transform = Transform3D(-7.42656e-08, 0, 1.699, 0, 1.699, 0, -1.699, 0, -7.42656e-08, 0, 0, 0)
+
+[node name="Icosphere" parent="Ant/ant" index="0"]
+transform = Transform3D(1, 0, -3.55271e-15, 0, 1, 0, 3.55271e-15, 0, 1, 0.011298, -0.0138367, -0.00265454)
+
+[node name="Icosphere_001" parent="Ant/ant" index="1"]
+transform = Transform3D(1, 0, -3.55271e-15, 0, 1, 0, 3.55271e-15, 0, 1, -0.688702, -0.082057, -0.00265454)
+
+[node name="Icosphere_002" parent="Ant/ant" index="2"]
+transform = Transform3D(1, 0, -3.55271e-15, 0, 1, 0, 3.55271e-15, 0, 1, 0.549684, -0.00802321, -0.00265454)
+
+[node name="Cube" parent="Ant/ant" index="3"]
+transform = Transform3D(0.940394, 0.340087, 0, -0.340087, 0.940394, 0, 0, 0, 1, 0.011298, -0.0138367, -0.00265454)
+
+[node name="Cube_001" parent="Ant/ant" index="4"]
+transform = Transform3D(0.955491, 0.295021, 0, -0.295021, 0.955491, 0, 0, 0, 1, 0.011298, -0.0138367, -0.00265454)
+
+[node name="Cube_002" parent="Ant/ant" index="5"]
+transform = Transform3D(0.939693, -0.34202, 0, 0.34202, 0.939693, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Cylinder" parent="Ant/ant" index="12"]
 transform = Transform3D(0, 0.662725, -0.748863, -1, 0, 0, 0, 0.748863, 0.662725, 0, 0.504407, 0)
-script = null
 
-[node name="Pew" parent="Ant/ant/Cylinder/Node3D" index="0" instance=ExtResource("5_g36cu")]
+[node name="Node3D" type="Node3D" parent="Ant/ant/Cylinder" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.5, 0)
+
+[node name="Pew" parent="Ant/ant/Cylinder/Node3D" instance=ExtResource("5_g36cu")]
 transform = Transform3D(0.998248, -0.0211148, 0.0552711, 0.0211148, 0.999776, 0.000584066, -0.0552711, 0.000584036, 0.998471, -0.194288, 0, 1.01366)
 
 [node name="MeshInstance3D" parent="Ant/ant/Cylinder/Node3D/Pew" index="1"]
@@ -70,7 +95,5 @@ script = null
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.80096, 0, -14.6508)
 script = null
 
-[editable path="BeePlayer"]
-[editable path="Ant"]
 [editable path="Ant/ant"]
 [editable path="Ant/ant/Cylinder/Node3D/Pew"]
