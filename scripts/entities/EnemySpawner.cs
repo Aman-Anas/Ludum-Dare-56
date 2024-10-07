@@ -23,6 +23,9 @@ public partial class EnemySpawner : RigidBody3D
     [Export]
     int maxToSpawn;
 
+    [Export]
+    AnimationPlayer anims;
+
     public override void _Ready()
     {
         GetTree().CreateTimer(reloadTime, false).Timeout += SpawnThingRepeat;
@@ -36,6 +39,7 @@ public partial class EnemySpawner : RigidBody3D
     }
 
     StringName good = new("Good");
+    StringName hurt = new("hurt");
 
     private void GotHit(Node body)
     {
@@ -43,6 +47,7 @@ public partial class EnemySpawner : RigidBody3D
         if (body.HasMeta(good))
         {
             Health -= (float)body.GetMeta(good);
+            anims.Play(hurt);
         }
         if (Health < 0)
         {
@@ -53,7 +58,8 @@ public partial class EnemySpawner : RigidBody3D
             {
                 SpawnThing();
             }
-
+            Manager.Instance.Data.LevelOneClearedBits++;
+            Manager.Instance.UpdateCount?.Invoke();
             QueueFree();
         }
     }

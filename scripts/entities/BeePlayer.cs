@@ -27,7 +27,7 @@ public partial class BeePlayer : RigidBody3D
     // Mouselook
     Vector2 mouseMovement = new();
 
-    public const float MOVEMENT_SPEED = 60f;
+    public const float MOVEMENT_SPEED = 64f;
     const float MOVEMENT_FORCE = 40f;
     const float ROTATION_SPEED = 3f;
 

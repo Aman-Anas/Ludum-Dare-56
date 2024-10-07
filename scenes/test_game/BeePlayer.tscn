@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://scripts/camera/CameraZoomer.cs" id="4_0rs1j"]
 [ext_resource type="Script" path="res://scripts/entities/PewShooter.cs" id="4_mtdcs"]
 [ext_resource type="Script" path="res://scripts/camera/CameraGameSmooth.cs" id="6_iqo1m"]
-[ext_resource type="AudioStream" uid="uid://doh4rk3q386e8" path="res://assets/sfx/Pew2.wav" id="8_tv43i"]
+[ext_resource type="AudioStream" uid="uid://dutj4gyk0phvq" path="res://assets/sfx/Pew1.wav" id="9_xx6y0"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_rs4nd"]
 friction = 0.09
@@ -67,16 +67,19 @@ transform = Transform3D(-2.73359e-08, 0, 0.625372, 0, 0.625372, 0, -0.625372, 0,
 [node name="Node3D" type="Node3D" parent="PhysicsSmoother"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.896656)
 
-[node name="Node3D" type="Node3D" parent="PhysicsSmoother/Node3D"]
+[node name="Node3D" type="Node3D" parent="PhysicsSmoother/Node3D" node_paths=PackedStringArray("bee")]
 transform = Transform3D(0.999391, 0, 0.0348995, 0, 1, 0, -0.0348995, 0, 0.999391, 0.7, 0, 0.457515)
 script = ExtResource("4_mtdcs")
 pew = ExtResource("2_i1gbd")
+bee = NodePath("../../..")
 
-[node name="Node3D2" type="Node3D" parent="PhysicsSmoother/Node3D"]
+[node name="Node3D2" type="Node3D" parent="PhysicsSmoother/Node3D" node_paths=PackedStringArray("bee")]
 transform = Transform3D(0.999391, 0, -0.0348995, 0, 1, 0, 0.0348995, 0, 0.999391, -0.7, 0, 0.457515)
 script = ExtResource("4_mtdcs")
 pew = ExtResource("2_i1gbd")
+bee = NodePath("../../..")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("8_tv43i")
-volume_db = -3.0
+stream = ExtResource("9_xx6y0")
+volume_db = -15.185
+pitch_scale = 0.41

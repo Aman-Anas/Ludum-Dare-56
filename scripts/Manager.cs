@@ -17,6 +17,8 @@ public partial class Manager : Node
 
     public GameData Data { get; private set; }
 
+    public Action UpdateCount { get; set; }
+
     [Export]
     PackedScene titleScene;
 

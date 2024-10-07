@@ -10,6 +10,12 @@ public partial class Ring : StaticBody3D
     [Export]
     Area3D area;
 
+    [Export]
+    bool exit;
+
+    [Export]
+    PackedScene nextScene;
+
     bool done = false;
 
     public override void _Ready()
@@ -25,5 +31,9 @@ public partial class Ring : StaticBody3D
         }
         player.Play("changegreen");
         done = true;
+        if (exit)
+        {
+            GetTree().ChangeSceneToPacked(nextScene);
+        }
     }
 }

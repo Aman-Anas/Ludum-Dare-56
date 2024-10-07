@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://bt5mbvj1d65bj"]
+[gd_scene load_steps=15 format=3 uid="uid://bt5mbvj1d65bj"]
 
 [ext_resource type="PackedScene" uid="uid://do3ulschmq3ve" path="res://scenes/levels/Anthill.tscn" id="1_qo8ha"]
 [ext_resource type="PackedScene" uid="uid://dafrcq72bjg88" path="res://scenes/test_game/PlayerDrop.tscn" id="3_k12k7"]
 [ext_resource type="PackedScene" uid="uid://dii3flj4bju3p" path="res://scenes/levels/Ant.tscn" id="4_6yto2"]
 [ext_resource type="PackedScene" uid="uid://0fmg3o4p48h6" path="res://assets/props/antlevel.glb" id="5_y02dk"]
 [ext_resource type="PackedScene" uid="uid://mnclnt1lihfr" path="res://assets/props/anttower.glb" id="6_3e8eo"]
+[ext_resource type="Script" path="res://scripts/UI/level1count.cs" id="6_xvco3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_p83lm"]
 
@@ -144,3 +145,31 @@ transform = Transform3D(8.44123, 0, 0, 0, 8.44123, 0, 0, 0, 8.44123, 4.84021, -2
 
 [node name="anttower7" parent="." instance=ExtResource("6_3e8eo")]
 transform = Transform3D(0.0590214, 0, 0, 0, 0.0590214, 0, 0, 0, 0.0590214, 1.64621, -0.304276, -16.0596)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -53.0
+offset_top = -31.0
+offset_right = 53.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -157.0
+offset_top = -20.0
+offset_right = 158.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "0 of 6 anthills destroyed!"
+script = ExtResource("6_xvco3")
