@@ -1,11 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://dd7wtsnynoibe"]
+[gd_scene load_steps=14 format=3 uid="uid://dd7wtsnynoibe"]
 
 [ext_resource type="PackedScene" uid="uid://cqmg4nlyt3jc0" path="res://scenes/main_menu/TitleInterface.tscn" id="1_frdvw"]
 [ext_resource type="PackedScene" uid="uid://l8wbb77wmmav" path="res://scenes/levels/level0.tscn" id="2_e5esf"]
 [ext_resource type="PackedScene" uid="uid://bk63wnt16u1q7" path="res://assets/entities/player/funnybee.glb" id="4_7ebg8"]
-[ext_resource type="PackedScene" uid="uid://dfr0h4re5dc8a" path="res://scenes/test_game/EvilPew.tscn" id="5_g36cu"]
 [ext_resource type="PackedScene" uid="uid://b4snowx1yi38v" path="res://scenes/test_game/Explosion.tscn" id="6_4lr38"]
 [ext_resource type="PackedScene" uid="uid://c0o23v8jfdb7j" path="res://assets/entities/ants/ant.glb" id="6_buhhs"]
+[ext_resource type="Script" path="res://scripts/entities/EvilPew.cs" id="6_n4xkp"]
+[ext_resource type="Material" uid="uid://bnlyjnb4pmfec" path="res://assets/materials/EvilPew.tres" id="7_gc8wo"]
 [ext_resource type="AudioStream" uid="uid://dutj4gyk0phvq" path="res://assets/sfx/Pew1.wav" id="7_jg513"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ayed3"]
@@ -18,6 +19,13 @@ background_mode = 2
 sky = SubResource("Sky_fbovr")
 sdfgi_enabled = true
 glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v81bs"]
+margin = 1.262
+size = Vector3(0.2, 0.2, 1.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_r7106"]
+size = Vector3(0.2, 0.2, 1.2)
 
 [node name="Title" type="Node3D"]
 
@@ -81,11 +89,22 @@ transform = Transform3D(0, 0.662725, -0.748863, -1, 0, 0, 0, 0.748863, 0.662725,
 [node name="Node3D" type="Node3D" parent="Ant/ant/Cylinder" index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.5, 0)
 
-[node name="Pew" parent="Ant/ant/Cylinder/Node3D" instance=ExtResource("5_g36cu")]
+[node name="Pew" type="RigidBody3D" parent="Ant/ant/Cylinder/Node3D"]
 transform = Transform3D(0.998248, -0.0211148, 0.0552711, 0.0211148, 0.999776, 0.000584066, -0.0552711, 0.000584036, 0.998471, -0.194288, 0, 1.01366)
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("6_n4xkp")
+metadata/Bad = 1.0
 
-[node name="MeshInstance3D" parent="Ant/ant/Cylinder/Node3D/Pew" index="1"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ant/ant/Cylinder/Node3D/Pew"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.23517e-08, 2.98023e-08, 0)
+shape = SubResource("BoxShape3D_v81bs")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ant/ant/Cylinder/Node3D/Pew"]
 transform = Transform3D(0.68, 0, 0, 0, 0.68, 0, 0, 0, 0.68, 0, 0, 0)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_r7106")
+surface_material_override/0 = ExtResource("7_gc8wo")
 
 [node name="Explosion" parent="." instance=ExtResource("6_4lr38")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.92316, 0, -6.43132)
@@ -96,4 +115,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.80096, 0, -14.6508)
 script = null
 
 [editable path="Ant/ant"]
-[editable path="Ant/ant/Cylinder/Node3D/Pew"]
