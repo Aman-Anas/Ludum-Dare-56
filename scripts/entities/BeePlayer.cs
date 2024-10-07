@@ -43,6 +43,9 @@ public partial class BeePlayer : RigidBody3D
     readonly StringName DEFAULT_ANIM = new("Idle"); // This should be an idle
     readonly StringName RUNNING_ANIM = new("Run");
 
+    [Export]
+    AudioStreamPlayer pewSound;
+
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
@@ -94,6 +97,8 @@ public partial class BeePlayer : RigidBody3D
         {
             pewPos1.Shoot();
             pewPos2.Shoot();
+
+            pewSound.Play();
 
             readyFire = false;
             GetTree().CreateTimer(0.1, false).Timeout += () => readyFire = true;

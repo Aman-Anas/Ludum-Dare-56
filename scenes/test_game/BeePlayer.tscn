@@ -8,13 +8,14 @@
 [ext_resource type="Script" path="res://scripts/camera/CameraZoomer.cs" id="4_0rs1j"]
 [ext_resource type="Script" path="res://scripts/entities/PewShooter.cs" id="4_mtdcs"]
 [ext_resource type="Script" path="res://scripts/camera/CameraGameSmooth.cs" id="6_iqo1m"]
+[ext_resource type="AudioStream" uid="uid://bvim6njuxyhe8" path="res://assets/sfx/Pew.wav" id="8_1wb2y"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_rs4nd"]
 friction = 0.09
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_e5v8d"]
 
-[node name="BeePlayer" type="RigidBody3D" node_paths=PackedStringArray("pewPos1", "pewPos2")]
+[node name="BeePlayer" type="RigidBody3D" node_paths=PackedStringArray("pewPos1", "pewPos2", "pewSound")]
 collision_layer = 2
 collision_mask = 3
 physics_material_override = SubResource("PhysicsMaterial_rs4nd")
@@ -24,7 +25,10 @@ max_contacts_reported = 1
 script = ExtResource("1_lc6q3")
 pewPos1 = NodePath("PhysicsSmoother/Node3D/Node3D")
 pewPos2 = NodePath("PhysicsSmoother/Node3D/Node3D2")
+
 explosion = ExtResource("2_5t65u")
+
+pewSound = NodePath("AudioStreamPlayer")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -2.40296e-09, 0.0549732)
@@ -74,3 +78,8 @@ pew = ExtResource("2_i1gbd")
 transform = Transform3D(0.999391, 0, -0.0348995, 0, 1, 0, 0.0348995, 0, 0.999391, -0.7, 0, 0.457515)
 script = ExtResource("4_mtdcs")
 pew = ExtResource("2_i1gbd")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_1wb2y")
+volume_db = -5.0
+pitch_scale = 0.95
