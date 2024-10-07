@@ -22,6 +22,9 @@ public partial class EvilDonut : RigidBody3D
     [Export]
     PackedScene virus;
 
+    [Export]
+    PackedScene win;
+
     public override void _Ready()
     {
         BodyEntered += (Node body) =>
@@ -72,6 +75,7 @@ public partial class EvilDonut : RigidBody3D
         GetTree().CurrentScene.AddChild(boom);
         boom.GlobalTransform = GlobalTransform;
         QueueFree();
+        GetTree().ChangeSceneToPacked(win);
     }
 
     public override void _IntegrateForces(PhysicsDirectBodyState3D state)
