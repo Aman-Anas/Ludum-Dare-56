@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dvig3ollw4ymu"]
+[gd_scene load_steps=6 format=3 uid="uid://dvig3ollw4ymu"]
 
 [ext_resource type="PackedScene" uid="uid://ck143vfiq2yo6" path="res://assets/entities/virus/virus.glb" id="1_2y2nx"]
 [ext_resource type="Script" path="res://scripts/entities/Virus.cs" id="1_iiv4b"]
+[ext_resource type="PackedScene" uid="uid://b4snowx1yi38v" path="res://scenes/test_game/Explosion.tscn" id="2_045up"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jtb1b"]
 radius = 0.988237
@@ -11,8 +12,15 @@ height = 5.68505
 custom_solver_bias = 1.0
 size = Vector3(200, 200, 200)
 
-[node name="Virus" type="RigidBody3D"]
+[node name="Virus" type="RigidBody3D" node_paths=PackedStringArray("detectPlayerArea")]
+collision_layer = 7
+collision_mask = 7
+contact_monitor = true
+max_contacts_reported = 1
 script = ExtResource("1_iiv4b")
+detectPlayerArea = NodePath("Area3D")
+speed = 3.0
+explosion = ExtResource("2_045up")
 metadata/Bad = 5.0
 
 [node name="virus" parent="." instance=ExtResource("1_2y2nx")]
@@ -22,6 +30,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.79574, 0)
 shape = SubResource("CapsuleShape3D_jtb1b")
 
 [node name="Area3D" type="Area3D" parent="."]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.79574, 0)

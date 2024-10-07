@@ -1,6 +1,7 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://cmeyu4ofgl2c0"]
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://cmeyu4ofgl2c0"]
 
 [ext_resource type="StyleBox" uid="uid://c0uibg7mpw8t1" path="res://theme/MainMenuButtonStyleBox.tres" id="1_whl0w"]
+[ext_resource type="FontVariation" uid="uid://bd1pe3yd5cuxt" path="res://assets/fonts/main_merged_font.tres" id="2_eoic2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oxr3x"]
 content_margin_left = 40.0
@@ -17,6 +18,7 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [resource]
+default_font = ExtResource("2_eoic2")
 NetButton/base_type = &"Button"
 NetButton/font_sizes/font_size = 45
 TitleButton/base_type = &"Button"
