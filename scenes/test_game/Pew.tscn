@@ -31,6 +31,7 @@ size = Vector3(0.1, 0.1, 0.1)
 [node name="Pew" type="RigidBody3D"]
 collision_layer = 4
 collision_mask = 5
+gravity_scale = 0.4
 continuous_cd = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
