@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cnfn1qrr1c8bj"]
+[gd_scene load_steps=12 format=3 uid="uid://cnfn1qrr1c8bj"]
 
 [ext_resource type="Script" path="res://scripts/entities/BeePlayer.cs" id="1_lc6q3"]
 [ext_resource type="PackedScene" uid="uid://b4snowx1yi38v" path="res://scenes/test_game/Explosion.tscn" id="2_5t65u"]
@@ -25,9 +25,7 @@ max_contacts_reported = 1
 script = ExtResource("1_lc6q3")
 pewPos1 = NodePath("PhysicsSmoother/Node3D/Node3D")
 pewPos2 = NodePath("PhysicsSmoother/Node3D/Node3D2")
-
 explosion = ExtResource("2_5t65u")
-
 pewSound = NodePath("AudioStreamPlayer")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
