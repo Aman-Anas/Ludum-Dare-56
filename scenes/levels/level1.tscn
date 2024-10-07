@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bt5mbvj1d65bj"]
+[gd_scene load_steps=16 format=3 uid="uid://bt5mbvj1d65bj"]
 
 [ext_resource type="PackedScene" uid="uid://do3ulschmq3ve" path="res://scenes/levels/Anthill.tscn" id="1_qo8ha"]
 [ext_resource type="PackedScene" uid="uid://dafrcq72bjg88" path="res://scenes/test_game/PlayerDrop.tscn" id="3_k12k7"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://0fmg3o4p48h6" path="res://assets/props/antlevel.glb" id="5_y02dk"]
 [ext_resource type="PackedScene" uid="uid://mnclnt1lihfr" path="res://assets/props/anttower.glb" id="6_3e8eo"]
 [ext_resource type="Script" path="res://scripts/UI/level1count.cs" id="6_xvco3"]
+[ext_resource type="PackedScene" uid="uid://diomwv7eas3c3" path="res://scenes/test_game/Ring.tscn" id="7_wgx18"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_p83lm"]
 
@@ -173,3 +174,18 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 30
 text = "0 of 6 anthills destroyed!"
 script = ExtResource("6_xvco3")
+
+[node name="Ring" parent="." instance=ExtResource("7_wgx18")]
+transform = Transform3D(5.79658, 0, 0, 0, 5.79658, 0, 0, 0, 5.79658, -67.2524, 227.882, -12.3594)
+
+[node name="Ring2" parent="." instance=ExtResource("7_wgx18")]
+transform = Transform3D(5.79658, 0, 0, 0, 5.79658, 0, 0, 0, 5.79658, -67.2524, 208.646, -12.3594)
+
+[node name="Ring3" parent="." instance=ExtResource("7_wgx18")]
+transform = Transform3D(5.79658, 0, 0, 0, 5.79658, 0, 0, 0, 5.79658, -67.2524, 191.137, -12.3594)
+
+[node name="Ring4" parent="." instance=ExtResource("7_wgx18")]
+transform = Transform3D(5.79658, 0, 0, 0, 5.79658, 0, 0, 0, 5.79658, -67.2524, 173.747, -12.3594)
+
+[node name="Ring5" parent="." instance=ExtResource("7_wgx18")]
+transform = Transform3D(5.79658, 0, 0, 0, 5.79658, 0, 0, 0, 5.79658, -67.2524, 151.022, -12.3594)
