@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://scripts/camera/CameraZoomer.cs" id="4_0rs1j"]
 [ext_resource type="Script" path="res://scripts/entities/PewShooter.cs" id="4_mtdcs"]
 [ext_resource type="Script" path="res://scripts/camera/CameraGameSmooth.cs" id="6_iqo1m"]
-[ext_resource type="AudioStream" uid="uid://bvim6njuxyhe8" path="res://assets/sfx/Pew.wav" id="8_1wb2y"]
+[ext_resource type="AudioStream" uid="uid://doh4rk3q386e8" path="res://assets/sfx/Pew2.wav" id="8_tv43i"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_rs4nd"]
 friction = 0.09
@@ -78,6 +78,5 @@ script = ExtResource("4_mtdcs")
 pew = ExtResource("2_i1gbd")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("8_1wb2y")
-volume_db = -5.0
-pitch_scale = 0.95
+stream = ExtResource("8_tv43i")
+volume_db = -3.0
