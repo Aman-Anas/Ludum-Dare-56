@@ -12,13 +12,13 @@ public partial class level1count : Label
     void UpdateThing()
     {
         var amt = Manager.Instance.Data.LevelOneClearedBits;
-        if (amt == 6)
+        if (amt == 17)
         {
             Text = $"ESCAPE!!";
         }
         else
         {
-            Text = $"{Manager.Instance.Data.LevelOneClearedBits} of 6 anthills destroyed!";
+            Text = $"{Manager.Instance.Data.LevelOneClearedBits} of 17 anthills destroyed!";
         }
     }
 

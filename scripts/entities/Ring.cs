@@ -25,6 +25,10 @@ public partial class Ring : StaticBody3D
 
     private void potato(Node3D body)
     {
+        if (Manager.Instance.Data.LevelOneClearedBits < 17)
+        {
+            return;
+        }
         if (body is not BeePlayer || done)
         {
             return;

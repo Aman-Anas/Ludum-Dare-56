@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://dvig3ollw4ymu"]
+
+[ext_resource type="PackedScene" uid="uid://ck143vfiq2yo6" path="res://assets/entities/virus/virus.glb" id="1_2y2nx"]
+[ext_resource type="Script" path="res://scripts/entities/Virus.cs" id="1_iiv4b"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jtb1b"]
+radius = 0.988237
+height = 5.68505
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hpwu5"]
+custom_solver_bias = 1.0
+size = Vector3(200, 200, 200)
+
+[node name="Virus" type="RigidBody3D"]
+script = ExtResource("1_iiv4b")
+metadata/Bad = 5.0
+
+[node name="virus" parent="." instance=ExtResource("1_2y2nx")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.79574, 0)
+shape = SubResource("CapsuleShape3D_jtb1b")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.79574, 0)
+shape = SubResource("BoxShape3D_hpwu5")

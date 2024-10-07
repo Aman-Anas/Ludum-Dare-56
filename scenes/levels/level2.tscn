@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://bj36xjeyc01jn"]
+
+[ext_resource type="PackedScene" uid="uid://dafrcq72bjg88" path="res://scenes/test_game/PlayerDrop.tscn" id="1_xk4q5"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m6nnd"]
+
+[sub_resource type="Sky" id="Sky_gf606"]
+sky_material = SubResource("ProceduralSkyMaterial_m6nnd")
+
+[sub_resource type="Environment" id="Environment_0h0d1"]
+background_mode = 2
+background_canvas_max_layer = -100
+sky = SubResource("Sky_gf606")
+tonemap_mode = 2
+ssil_enabled = true
+glow_enabled = true
+glow_intensity = 1.1
+glow_strength = 0.22
+glow_bloom = 1.0
+glow_blend_mode = 1
+glow_hdr_threshold = 1.11
+glow_hdr_scale = 1.55
+glow_hdr_luminance_cap = 116.36
+volumetric_fog_density = 0.024
+
+[sub_resource type="Gradient" id="Gradient_bsyo6"]
+offsets = PackedFloat32Array(0, 0.250689, 0.53719, 0.988981)
+colors = PackedColorArray(0.271337, 0.2407, 0, 1, 0.45, 1, 0, 1, 1, 0.233333, 0, 1, 0.35, 1, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_mceay"]
+frequency = 0.0547
+domain_warp_enabled = true
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7tbk3"]
+color_ramp = SubResource("Gradient_bsyo6")
+noise = SubResource("FastNoiseLite_mceay")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ll0yh"]
+albedo_color = Color(0.907942, 0.907942, 0.907942, 1)
+albedo_texture = SubResource("NoiseTexture2D_7tbk3")
+uv1_scale = Vector3(0.003, 0.003, 0.003)
+uv1_triplanar = true
+
+[node name="Level2" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_0h0d1")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.866025, 0.12941, 0.482963, -0.493568, 0.0668276, 0.867136, 0.0799406, -0.989337, 0.121747, -13.5504, 10.1729, 22.6275)
+shadow_enabled = true
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.946857, -0.113543, -0.300949, 0.292306, 0.0867323, -0.952384, 0.134238, -0.98974, -0.0489338, 29.6941, 10.1729, 22.6275)
+shadow_enabled = true
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+flip_faces = true
+radius = 76.104
+material = SubResource("StandardMaterial3D_ll0yh")
+
+[node name="PlayerDrop" parent="." instance=ExtResource("1_xk4q5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.873, 12.2592, -5.63657)
