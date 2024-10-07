@@ -72,7 +72,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("1_sshgn")
 theme_type_variation = &"TitleLarge"
-text = "The Game"
+text = "Wings of War"
 horizontal_alignment = 1
 vertical_alignment = 1
 
