@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bt5mbvj1d65bj"]
+[gd_scene load_steps=19 format=3 uid="uid://bt5mbvj1d65bj"]
 
 [ext_resource type="PackedScene" uid="uid://do3ulschmq3ve" path="res://scenes/levels/Anthill.tscn" id="1_qo8ha"]
 [ext_resource type="PackedScene" uid="uid://dafrcq72bjg88" path="res://scenes/test_game/PlayerDrop.tscn" id="3_k12k7"]
@@ -8,7 +8,6 @@
 [ext_resource type="Script" path="res://scripts/UI/level1count.cs" id="6_xvco3"]
 [ext_resource type="PackedScene" uid="uid://diomwv7eas3c3" path="res://scenes/test_game/Ring.tscn" id="7_wgx18"]
 [ext_resource type="PackedScene" uid="uid://bj36xjeyc01jn" path="res://scenes/levels/level2.tscn" id="8_bovrb"]
-[ext_resource type="AudioStream" uid="uid://u704dnixyqww" path="res://assets/sfx/Jungular-Groove.wav" id="8_yrqac"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_p83lm"]
 
@@ -418,8 +417,3 @@ inLvl1 = true
 [node name="Ring5" parent="." instance=ExtResource("7_wgx18")]
 transform = Transform3D(14.622, 0, 0, 0, -6.3915e-07, -14.622, 0, 14.622, -6.3915e-07, 661.788, 89.8687, -174.267)
 inLvl1 = true
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("8_yrqac")
-volume_db = -12.0
-autoplay = true

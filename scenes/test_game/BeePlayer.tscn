@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cnfn1qrr1c8bj"]
+[gd_scene load_steps=13 format=3 uid="uid://cnfn1qrr1c8bj"]
 
 [ext_resource type="Script" path="res://scripts/entities/BeePlayer.cs" id="1_lc6q3"]
 [ext_resource type="PackedScene" uid="uid://b4snowx1yi38v" path="res://scenes/test_game/Explosion.tscn" id="2_5t65u"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://scripts/entities/PewShooter.cs" id="4_mtdcs"]
 [ext_resource type="Script" path="res://scripts/camera/CameraGameSmooth.cs" id="6_iqo1m"]
 [ext_resource type="AudioStream" uid="uid://dutj4gyk0phvq" path="res://assets/sfx/Pew1.wav" id="9_xx6y0"]
+[ext_resource type="AudioStream" uid="uid://u704dnixyqww" path="res://assets/sfx/Jungular-Groove.wav" id="10_y4o17"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_rs4nd"]
 friction = 0.09
@@ -83,3 +84,8 @@ bee = NodePath("../../..")
 stream = ExtResource("9_xx6y0")
 volume_db = -15.185
 pitch_scale = 0.41
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_y4o17")
+volume_db = -12.0
+autoplay = true
